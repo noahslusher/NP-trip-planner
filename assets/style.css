@@ -1,0 +1,15 @@
+.hero {
+   background-image:url("../assets/wallpaper.jpg"); 
+   background-position: center;
+   display: flex;
+   justify-content: flex-start;
+   height: 200px;
+   align-items: flex-end;
+}
+
+button {
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 0 10px 0 10px;
+
+}

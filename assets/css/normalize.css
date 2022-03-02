@@ -1,0 +1,36 @@
+/* clear margin and padding  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* clear li style  */
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+input {
+  outline: none;
+}
+/* cursor's style of button */
+button {
+  cursor: pointer;
+  appearance: none;
+  border: none;
+}
+
+a {
+  color: #666;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: rgb(92, 163, 233);
+}
