@@ -31,7 +31,9 @@ body {
     position: sticky;
     z-index: 9999;
 }
-
+h3 {
+    color: var(---tertiary-color)
+}   
 
 
 .hero-second {
