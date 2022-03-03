@@ -2,7 +2,7 @@ var weatherURL = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&a
 var geocodeURL = "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={90fb50fac270c54c352e49a47c6e77fa}"
 var npsURL = "https://developer.nps.gov/api/v1/parks?api_key=an37e2Ppy9WcQfy49UMTcCmkLGx6ExPIU7Z3D0qc"
 
-
+// testing out npsURL API url for functionality
 fetch(npsURL) 
 .then(function(response) {
  return response.json()
@@ -11,6 +11,8 @@ fetch(npsURL)
  })
 })
 
+
+// national parks array by state
 var nationalParks = {
  AL: ["Denali National Park", "Gates of the Arctic National Park", "Glacier Bay National Park", "Katmai National Park", "Kenai Fjords National Park", "Kobuk Valley National Park", "Lake Clark National Park", "Wrangell-St. Elias National Park"],
  AK: [],
@@ -64,7 +66,7 @@ var nationalParks = {
  WY: ["Grand Teton National Park", "Yellowstone National Park"],
 }
 
-
+// trying to make getParkList function pull value from specific key
 function getParkList() {
 //console.log(Object.entries(stateNPList))
 for (var key in stateNPList) {
@@ -72,6 +74,7 @@ for (var key in stateNPList) {
 }
 }
 
+// 4 letter code national parks array by state
 var stateNPList = {
  AL: ["DENA", "GAAR", "GLBA", "KATM", "KEFJ", "KOVA", "LACL", "WRST"],
  AK: [],
