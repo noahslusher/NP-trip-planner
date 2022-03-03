@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style1.css">
   <title>National Park</title>
 
 </head>
@@ -13,17 +13,17 @@
 <body>
 
   <header class="hero">
-    <h1 class="app-title text-xl">National Parks</h1>
+    <h1 class="app-title text-[72px] pl-3">National Parks</h1>
   </header>
 
-  <p> Plan your trip! </p>
-
-  <nav>
-
-    <div class="search-bar state-drop-down">
-
-      <form id="" class="" >
-        <select name="state" size="1">
+<main class ="flex-col space-y-10">
+  <div class="text-center pt-10 px-10">
+    This website is meant for you to quickly obtain information you will need to plan a trip to the National Park of your choice! 
+  </div>
+  <div>
+      <!-- SELECT STATE -->
+    <form id="" class="text-center" >
+        <select name="national-park" id="" class="border text-black" type="text" autofocus="true" size="1">
           <option value="SEL">SELECT STATE</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -77,19 +77,77 @@
           <option value="WI">Wisconsin</option>
           <option value="WY">Wyoming</option>
         </select>
-        <button type="submit" id="btn" >Search</button>
-      </form>
-      </br>
+      <button class="mb-20 hover:bg-black" type="submit" id="btn">Search</button>
       <!-- Select Date -->
       <div class="form-group">
         <label for="modalDate">Select Date: </label>
         <input type="text" id="modalDate" placeholder="mm/dd/yyyy" autocomplete="off" />
       </div>
+    </form>
+  </div>
+</main> 
 
-    </div>
-    
+<section class="flex flex-wrap justify-center space-x-10 mx-20">
+<div></div>
+<div class="card flex-col grow-4 p-5 border">
+  <h3 class="text-[24px]">Blue Ridge Parkway</h3>
+  <img class="object-fill h-48 w-75 rounded" src="./assets/images/background.jpg">
+  <p>A Blue Ridge Parkway experience is 
+  </br>unlike any other: a slow-paced and
+  </br>relaxing drive revealing stunning 
+  </br>long-range vistas and close-up views 
+  </br>of the rugged mountains and pastoral 
+  </br>landscapes of the Appalachian 
+  </br>Highlands. The Parkway meanders for 
+  </br>469 miles, protecting a diversity of
+  </br> plants and animals, and providing 
+  </br>opportunities for enjoying all that 
+  </br>makes this region of the country so 
+  </br>special.</p>
+</div>
 
-  </nav>
+<div class="card flex-col grow-4 p-5">
+  <h3 class="text-[24px] border">Great Smoky Mountains
+  </br>National Park</h3>
+  <img class="object-fill h-48 w-75 rounded" src="./assets/images/background.jpg">
+  <p>info</p>
+</div>
+
+<div class="card flex-col grow-4 p-5">
+  <h3 class="text-[24px] border">Golden Gate </br>National Recreation Area</h3>
+  <img class="object-fill rounded h-48 w-75 border" src="./assets/images/background.jpg">
+  <p class="border">Experience a park so rich it supports </br>
+    19 distinct ecosystems with over </br>
+    2,000 plant and animal species. Go for </br>
+    a hike, enjoy a vista, have a picnic or </br>
+     learn about the centuries of </br>
+     overlapping history from California’s </br>
+     indigenous cultures, Spanish </br>
+     colonialism, the Mexican Republic, </br>
+     US military expansion and the growth</br>
+     of San Francisco. All of this and more </br>
+     awaits you, so get out and find your </br>park.</p>
+</div>
+
+<div class="card flex-col grow-4 p-5">
+  <h3 class="text-[24px]">Gateway National </br>Recreation Area</h3>
+  <img class="object-fill h-48 w-75" src="./assets/images/background.jpg">
+  <p>info</p>
+</div>
+
+<div class="card flex-col grow-4 p-5">
+  <h3 class="text-[24px]">Lake Mead National </br>Recreation Area</h3>
+  <img class="object-fill h-48 w-75" src="./assets/images/background.jpg">
+  <p>info</p>
+</div>
+
+<div class="card flex-col grow-4 p-5">
+  <h3 class="text-[24px]">George Washington </br>Memorial Parkway</h3>
+  <img class="object-fill h-48 w-75" src="./assets/images/background.jpg">
+  <p>info</p>
+</div>
+
+</section>
 
   <script src="./assets/homepage.js"></script>
 </body>
