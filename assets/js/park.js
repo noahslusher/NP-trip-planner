@@ -1,64 +1,63 @@
 var nationalParks = {
-  AL: ["Denali National Park", "Gates of the Arctic National Park", "Glacier Bay National Park", "Katmai National Park", "Kenai Fjords National Park", "Kobuk Valley National Park", "Lake Clark National Park", "Wrangell-St. Elias National Park"],
-  AK: [],
-  AZ: ["Grand Canyon National Park", "Petrified Forest National Park", "Saguaro National Park"],
-  AR: ["Hot Springs National Park"],
-  CA: ["Channel Islands National Park", "Death Valley National Park", "Joshua Tree National Park", "Kings Canyon National Park", "Lassen Volcanic National Park", "Redwood National Park", "Sequoia National Park", "Yosemite National Park"],
-  CO: ["Black Canyon of the Gunnison National Park", "Great Sand Dunes National Park", "Mesa Verde National Park", "Rocky Mountain National Park"],
-  CT: [],
-  DE: [],
-  FL: ["Biscayne National Park", "Dry Tortugas National Park", "Everglades National Park"],
-  GA: [],
-  HI: ["Haleakala National Park", "Hawaii Volcanoes National Park"],
-  ID: ["Yellowstone National Park"],
-  IL: [],
-  IN: [],
-  IA: [],
-  KS: [],
-  KY: ["Mammoth Cave National Park"],
-  LA: [],
-  ME: ["Acadia National Park"],
-  MD: [],
-  MA: [],
-  MI: ["Isle Royale National Park"],
-  MN: ["Voyageurs National Park"],
-  MS: [],
-  MO: [],
-  MT: ["Glacier National Park", "Yellowstone National Park"],
-  NE: [],
-  NV: ["Great Basin National Park"],
-  NH: [],
-  NJ: [],
-  NM: ["Carlsbad Caverns National Park"],
-  NY: [],
-  NC: ["Great Smoky Mountains National Park"],
-  ND: ["Theodore Roosevelt National Park"],
-  OH: ["Cuyahoga Valley National Park"],
-  OK: [],
-  OR: ["Crater Lake National Park"],
-  PA: [],
-  RI: [],
-  SC: ["Congaree National Park"],
-  SD: ["Badlands National Park", "Wind Cave National Park"],
-  TN: ["Great Smoky Mountains National Park"],
-  TX: ["Big Bend National Park", "Guadalupe Mountains National Park"],
-  UT: ["Arches National Park", "Bryce Canyon National Park", "Canyonlands National Park", "Capitol Reef National Park", "Zion National Park"],
-  VT: [],
-  VA: ["Shenandoah National Park"],
-  WA: ["Mount Rainier National Park", "North Cascades National Park", "Olympic National Park"],
-  WV: [],
-  WI: [],
-  WY: ["Grand Teton National Park", "Yellowstone National Park"],
+  AL: ["Denali National Park | dena", "Gates of the Arctic National Park | gaar", "Glacier Bay National Park | glba", "Katmai National Park | katm", "Kenai Fjords National Park | kefj", "Kobuk Valley National Park | kova", "Lake Clark National Park | lacl", "Wrangell-St. Elias National Park | wrst"],
+ AK: [],
+ AZ: ["Grand Canyon National Park | grca", "Petrified Forest National Park | pefo", "Saguaro National Park | sagu"],
+ AR: ["Hot Springs National Park | hosp"],
+ CA: ["Channel Islands National Park |chis", "Death Valley National Park | deva", "Joshua Tree National Park | jotr", "Kings Canyon National Park | kica", "Lassen Volcanic National Park | lavo", "Redwood National Park | redw", "Sequoia National Park | sequ", "Yosemite National Park | yose"],
+ CO: ["Black Canyon of the Gunnison National Park | blca", "Great Sand Dunes National Park | grsa", "Mesa Verde National Park | meve", "Rocky Mountain National Park | romo"],
+ CT: [],
+ DE: [],
+ FL: ["Biscayne National Park | bisc", "Dry Tortugas National Park | drto", "Everglades National Park | ever"],
+ GA: [],
+ HI: ["Haleakala National Park | hale", "Hawaii Volcanoes National Park | havo"],
+ ID: ["Yellowstone National Park | yell"],
+ IL: [],
+ IN: [],
+ IA: [],
+ KS: [],
+ KY: ["Mammoth Cave National Park | maca"],
+ LA: [],
+ ME: ["Acadia National Park | acad"],
+ MD: [],
+ MA: [],
+ MI: ["Isle Royale National Park | isro"],
+ MN: ["Voyageurs National Park | voya"],
+ MS: [],
+ MO: [],
+ MT: ["Glacier National Park | glac", "Yellowstone National Park | yell"],
+ NE: [],
+ NV: ["Great Basin National Park | grba"],
+ NH: [],
+ NJ: [],
+ NM: ["Carlsbad Caverns National Park | caca"],
+ NY: [],
+ NC: ["Great Smoky Mountains National Park | grsm"],
+ ND: ["Theodore Roosevelt National Park | thro"],
+ OH: ["Cuyahoga Valley National Park | cuya"],
+ OK: [],
+ OR: ["Crater Lake National Park | crla"],
+ PA: [],
+ RI: [],
+ SC: ["Congaree National Park | cong"],
+ SD: ["Badlands National Park | badl", "Wind Cave National Park | wica"],
+ TN: ["Great Smoky Mountains National Park | grsm"],
+ TX: ["Big Bend National Park | bibe", "Guadalupe Mountains National Park | gumo"],
+ UT: ["Arches National Park | arch", "Bryce Canyon National Park | brca", "Canyonlands National Park | cany", "Capitol Reef National Park | care", "Zion National Park | zion"],
+ VT: [],
+ VA: ["Shenandoah National Park | shen"],
+ WA: ["Mount Rainier National Park | mora", "North Cascades National Park | noca", "Olympic National Park | olym"],
+ WV: [],
+ WI: [],
+ WY: ["Grand Teton National Park | grte", "Yellowstone National Park | yell"],
 };
 
 var getState = "UT";
 var getDate = new Date();
 var parkList = nationalParks[getState];
-var parkCodeList = ["arch", "brca", "cany", "care", "zion"];
 
 function createParkSection() {
   // create park section according to the parkCodeList.length
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < parkList.length; i++) {
     $(".park-list").append($("#template").clone().attr("id", ""));
   }
   $("#template").remove();
@@ -66,9 +65,9 @@ function createParkSection() {
 createParkSection();
 
 for (let i = 0; i < parkList.length; i++) {
-  var parkName = parkList[i];
+  var parkName = parkList[i].split("|")[0].trim();
   var parkDiv = $(".park").eq(i);
-  var parkCode = parkCodeList[i];
+  var parkCode = parkList[i].split("|")[1].trim();
   // put in name
   $(parkDiv)
     .find("h2")
@@ -92,7 +91,9 @@ for (let i = 0; i < parkList.length; i++) {
       alt: "parkName",
     });
   // google api: put in google map
-  $(parkDiv).find(".park-map").html('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
+  $(parkDiv)
+    .find(".park-map")
+    .html('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -175,10 +176,6 @@ function getWeather(lat, lon, divIndex) {
       return response.json();
     })
     .then((result) => {
-      // display current weather
-      var currentData = [result.current.temp, result.current.wind_speed, result.current.humidity, result.current.uvi.toFixed(2)];
-      var currentWeather = result.current.weather[0].main.toLowerCase();
-
       //display future weather
       for (let i = 0; i < 7; i++) {
         var futureData = [result.daily[i].temp.day, result.daily[i].wind_speed, result.daily[i].humidity];
@@ -192,8 +189,14 @@ function getWeather(lat, lon, divIndex) {
 
 // click the date and add active status
 $(".weather-row").on("click", "div", function () {
-  console.log("clicked");
+  if (localStorage.getItem("tripPlan")) {
+    $(".generateBtn").text("Update Your Trip");
+  }
   $(this).toggleClass("active");
+  if ($(".active").length === 0) {
+    $(".generateBtn").removeClass("generateBtn-active");
+    return false;
+  }
   $(".generateBtn").addClass("generateBtn-active");
 });
 
@@ -209,6 +212,11 @@ var itinerary = {
 
 // generate the trip
 $(".generateBtn").on("click", function () {
+  if ($(".active").length === 0) {
+    alert("no");
+    return;
+  }
+
   console.log($(".active").length);
   $(".active").each(function () {
     var dayIndex = $(this).index() + 1;
@@ -219,6 +227,15 @@ $(".generateBtn").on("click", function () {
   });
 
   localStorage.setItem("tripPlan", JSON.stringify(itinerary));
+  $(".generateBtn").text("Trip Saved").addClass("generateBtn-save");
+
+  setTimeout(function () {
+    $(".generateBtn").removeClass("generateBtn-active");
+  }, 1000);
+
+  setTimeout(function () {
+    $(".generateBtn").removeClass("generateBtn-active generateBtn-save").text("Generate Trip");
+  }, 2000);
 });
 
 // load the tripplan from localstorage
@@ -245,4 +262,3 @@ function loadTrip() {
     }
   }
 }
-
