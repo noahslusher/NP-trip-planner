@@ -8,7 +8,7 @@
 body {
     color:white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-image: url("../images/background1.jpeg");
+    background-image: url("../images/background1.jpg");
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -20,7 +20,7 @@ body {
    background-position: center;
    display: flex;
    justify-content: flex-start;
-   background-image: url("../images/background1.jpeg");
+   background-image: url("../images/background1.jpg");
    height: 200px;
    top: 0;
    background-size: cover;
@@ -37,7 +37,7 @@ h3 {
 }   
 
 .hero-second {
-    background-image: url("../images/background1.jpeg");
+    background-image: url("../images/background1.jpg");
     height:200px;
     width: 100%;
     
