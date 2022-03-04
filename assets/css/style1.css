@@ -51,3 +51,49 @@ button {
 
 }
 
+@media (max-width: 820px) {
+    .date-text {
+        font-size: 22px;
+    }
+    .cards{
+        margin: auto;
+        width: 100%;
+        padding-right: 50px;
+    }
+}
+
+@media (max-width: 570px) {
+.app-title{
+    display:flex;
+    justify-content: flex-start;
+    font-size: 55px;
+}
+.info {
+    font-size: 24px;
+    margin: 0 30px 0 30px;
+}
+.steps {
+    display: flex;
+    flex-direction: column;
+    flex: flex-wrap;
+
+}
+.date-text {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+.form-group {
+    padding-bottom: 20px;
+    margin-left: 15px;
+}
+
+.state {
+   padding-right: 16px;
+}
+.cards{
+    margin: auto;
+    width: 100%;
+    padding-right: 50px;
+}
+}
