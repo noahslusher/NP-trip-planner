@@ -54,11 +54,10 @@ var nationalParks = {
 var getState = "UT";
 var getDate = new Date();
 var parkList = nationalParks[getState];
-var parkCodeList = ["arch", "brca", "cany", "care", "zion"];
 
 function createParkSection() {
   // create park section according to the parkCodeList.length
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < parkList.length; i++) {
     $(".park-list").append($("#template").clone().attr("id", ""));
   }
   $("#template").remove();
@@ -66,9 +65,9 @@ function createParkSection() {
 createParkSection();
 
 for (let i = 0; i < parkList.length; i++) {
-  var parkName = parkList[i];
+  var parkName = parkList[i].split("|")[0].trim();
   var parkDiv = $(".park").eq(i);
-  var parkCode = parkCodeList[i];
+  var parkCode = parkList[i].split("|")[1].trim();
   // put in name
   $(parkDiv)
     .find("h2")
@@ -92,7 +91,9 @@ for (let i = 0; i < parkList.length; i++) {
       alt: "parkName",
     });
   // google api: put in google map
-  $(parkDiv).find(".park-map").html('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
+  $(parkDiv)
+    .find(".park-map")
+    .html('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -119,6 +120,13 @@ function getGeo(parkName, i) {
       console.log("geo-api connect error", error);
     });
 }
+
+// datepicker
+$( function() {
+  $( "#datepicker" ).datepicker().addClass("font-color: blue");
+    minDate: 1
+} );
+
 
 // return future date according to tomorrow(i=1), the day after tomorrow(i=2) ,etc
 function displayDate(i) {
@@ -168,10 +176,6 @@ function getWeather(lat, lon, divIndex) {
       return response.json();
     })
     .then((result) => {
-      // display current weather
-      var currentData = [result.current.temp, result.current.wind_speed, result.current.humidity, result.current.uvi.toFixed(2)];
-      var currentWeather = result.current.weather[0].main.toLowerCase();
-
       //display future weather
       for (let i = 0; i < 7; i++) {
         var futureData = [result.daily[i].temp.day, result.daily[i].wind_speed, result.daily[i].humidity];
@@ -185,8 +189,14 @@ function getWeather(lat, lon, divIndex) {
 
 // click the date and add active status
 $(".weather-row").on("click", "div", function () {
-  console.log("clicked");
+  if (localStorage.getItem("tripPlan")) {
+    $(".generateBtn").text("Update Your Trip");
+  }
   $(this).toggleClass("active");
+  if ($(".active").length === 0) {
+    $(".generateBtn").removeClass("generateBtn-active");
+    return false;
+  }
   $(".generateBtn").addClass("generateBtn-active");
 });
 
@@ -202,6 +212,11 @@ var itinerary = {
 
 // generate the trip
 $(".generateBtn").on("click", function () {
+  if ($(".active").length === 0) {
+    alert("no");
+    return;
+  }
+
   console.log($(".active").length);
   $(".active").each(function () {
     var dayIndex = $(this).index() + 1;
@@ -212,6 +227,15 @@ $(".generateBtn").on("click", function () {
   });
 
   localStorage.setItem("tripPlan", JSON.stringify(itinerary));
+  $(".generateBtn").text("Trip Saved").addClass("generateBtn-save");
+
+  setTimeout(function () {
+    $(".generateBtn").removeClass("generateBtn-active");
+  }, 1000);
+
+  setTimeout(function () {
+    $(".generateBtn").removeClass("generateBtn-active generateBtn-save").text("Generate Trip");
+  }, 2000);
 });
 
 // load the tripplan from localstorage
@@ -238,4 +262,3 @@ function loadTrip() {
     }
   }
 }
-

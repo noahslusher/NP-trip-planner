@@ -36,10 +36,24 @@ h3 {
     color: var(---tertiary-color)
 }   
 
+<<<<<<< HEAD
+=======
+.hero-second {
+    background-image: url("../images/background1.jpg");
+    height:200px;
+    width: 100%;
+    
+}
+>>>>>>> 104155ff19a196610ba3f56ddd72946992377f9e
 
 button {
     border: solid 1px white;
     border-radius: 5px;
     padding: 0 10px 0 10px;
 
+}
+
+.btn {
+    margin-top: 4vh;
+    padding: 1vw;
 }

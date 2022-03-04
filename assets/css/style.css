@@ -1,12 +1,14 @@
 body {
   width: 80%;
   margin: 50px auto 0;
-  font-family: open sans;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  background-color: rgb(253, 253, 253);
 }
 .secondpage-header {
   background-position: center;
   display: flex;
   justify-content: flex-start;
+  background-image: url("../images/background1.jpg");
   height: 200px;
   top: 0;
   background-size: cover;
@@ -16,11 +18,7 @@ body {
   position: -webkit-sticky;
    position: sticky;
    z-index: 9999;
-   background: linear-gradient(to right, grey, rgb(250, 211, 144));
-   
-   width: auto;
 }
-
 .park {
   margin-top: 50px;
   padding: 10px 0;
@@ -118,7 +116,7 @@ body {
 }
 
 .active {
-  background: rgb(230, 142, 10) !important;
+  background: rgb(206, 123, 15) !important;
 }
 
 .weather-row > div:hover::before {
@@ -171,6 +169,11 @@ body {
 
 .generateBtn-active {
   transform: translate(-50%, -20px) !important;
+  transition: 1s;
+}
+
+.generateBtn-save {
+  background: rgb(230, 142, 10);
 }
 
 .plan-date,
