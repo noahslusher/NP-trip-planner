@@ -120,6 +120,13 @@ function getGeo(parkName, i) {
     });
 }
 
+// datepicker
+$( function() {
+  $( "#datepicker" ).datepicker().addClass("font-color: blue");
+    minDate: 1
+} );
+
+
 // return future date according to tomorrow(i=1), the day after tomorrow(i=2) ,etc
 function displayDate(i) {
   var date = new Date();
