@@ -1,15 +1,8 @@
 body {
   width: 80%;
   margin: 50px auto 0;
-  font-family: open sans;
-}
-.hero {
-   background-image:url("../images/wallpaper.jpg"); 
-   background-position: center;
-   display: flex;
-   justify-content: flex-start;
-   height: 200px;
-   align-items: flex-end;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  background-color: rgb(253, 253, 253);
 }
 
 .park {
@@ -109,7 +102,7 @@ body {
 }
 
 .active {
-  background: rgb(230, 142, 10) !important;
+  background: rgb(206, 123, 15) !important;
 }
 
 .weather-row > div:hover::before {
@@ -162,6 +155,11 @@ body {
 
 .generateBtn-active {
   transform: translate(-50%, -20px) !important;
+  transition: 1s;
+}
+
+.generateBtn-save {
+  background: rgb(230, 142, 10);
 }
 
 .plan-date,
