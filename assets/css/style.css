@@ -3,13 +3,22 @@ body {
   margin: 50px auto 0;
   font-family: open sans;
 }
-.hero {
-   background-image:url("../images/wallpaper.jpg"); 
-   background-position: center;
-   display: flex;
-   justify-content: flex-start;
-   height: 200px;
-   align-items: flex-end;
+.secondpage-header {
+  background-position: center;
+  display: flex;
+  justify-content: flex-start;
+  height: 200px;
+  top: 0;
+  background-size: cover;
+   background-attachment: fixed;
+   background-position: 50%;
+  align-items: flex-end;
+  position: -webkit-sticky;
+   position: sticky;
+   z-index: 9999;
+   background: linear-gradient(to right, grey, rgb(250, 211, 144));
+   
+   width: auto;
 }
 
 .park {
