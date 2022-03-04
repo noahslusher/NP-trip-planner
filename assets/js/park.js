@@ -91,9 +91,8 @@ for (let i = 0; i < 3; i++) {
       alt: parkName,
     });
   // google api: put in google map
-  $(parkDiv)
-    .find(".park-map")
-    .html('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
+  $(parkDiv).find(".park-map")
+  .append('<div><iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe></div>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -210,6 +209,7 @@ $(".weather-row").on("click", "div", function () {
 $(".generateBtn").on("click", function () {
   if ($(".generateBtn").text() === "Create Your First Trip") {
     $(".currentPlan").addClass("currentPlan-active");
+    $(".plan-date").remove();
     $(".currentPlan").append("<div><p class='plan-date'>" + "To generate your first trip, please select the dates you would like to visit. " + "</p></div>");
     return;
   }

@@ -8,6 +8,7 @@ body {
 .park {
   margin-top: 50px;
   padding: 10px 0;
+  background: url("https://www.nps.gov/common/uploads/structured_data/010A933C-95B1-CBCD-D6D64D47D5B81E76.jpg");
 }
 
 .park h2 {
@@ -32,14 +33,16 @@ body {
 }
 
 .brief-intro {
-  background-color: pink;
-  flex: 1;
+  /* background-color: pink; */
+  flex: 2;
+
+  margin-left: 10px;
 
   flex-wrap: wrap;
 }
 
 .brief-intro p {
-  padding: 10px;
+  margin-bottom: 5px;
   /* background-color: pink; */
   flex: 1;
 }
@@ -47,6 +50,15 @@ body {
 .park-map {
   flex: 1;
   padding: 0 10px;
+}
+.park-map div {
+  height: 255px;
+}
+.park-map > * {
+  /* flex: 0 0 100%; */
+}
+.park-map div {
+  /* height: 100%; */
 }
 
 .park-map iframe {
@@ -182,7 +194,7 @@ body {
   text-align: center;
   font-size: 30px;
   padding-bottom: 5px;
-  border-bottom: 5px solid rgb(24, 116, 31);
+  border-bottom: 3px solid rgb(24, 116, 31);
 }
 
 .cross {
