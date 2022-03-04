@@ -54,11 +54,10 @@ var nationalParks = {
 var getState = "UT";
 var getDate = new Date();
 var parkList = nationalParks[getState];
-var parkCodeList = ["arch", "brca", "cany", "care", "zion"];
 
 function createParkSection() {
   // create park section according to the parkCodeList.length
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < parkList.length; i++) {
     $(".park-list").append($("#template").clone().attr("id", ""));
   }
   $("#template").remove();
@@ -66,9 +65,9 @@ function createParkSection() {
 createParkSection();
 
 for (let i = 0; i < parkList.length; i++) {
-  var parkName = parkList[i];
+  var parkName = parkList[i].split("|")[0].trim();
   var parkDiv = $(".park").eq(i);
-  var parkCode = parkCodeList[i];
+  var parkCode = parkList[i].split("|")[1].trim();
   // put in name
   $(parkDiv)
     .find("h2")
