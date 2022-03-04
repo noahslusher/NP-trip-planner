@@ -4,11 +4,11 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   background-color: rgb(253, 253, 253);
 }
-.secondpage-header {
+header {
   background-position: center;
   display: flex;
   justify-content: flex-start;
-  background-image: url("../images/background1.jpg");
+  background: linear-gradient(to right, white, rgb(250, 211, 144));
   height: 200px;
   top: 0;
   background-size: cover;
