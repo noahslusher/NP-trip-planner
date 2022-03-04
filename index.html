@@ -16,21 +16,31 @@
 <body>
 
   <header class="hero">
-    <h1 class="app-title text-[72px] pl-3">National Parks</h1>
+    <h1 class="app-title text-[84px] pl-3">National Parks </h1>
   </header>
 
 <main class ="flex-col space-y-10">
-  <div class="text-center text-[18px] pt-10 px-10">
+    <h2 class="text-center text-[24px] pt-20 italic">What are you waiting for? Plan your next adventure!</h2>
+    <div class="flex justify-center justify-content-between text-[30px] px-10 mx-10">
+      <div class="p-10 text-black bg-orange-200 opacity-75 rounded-l-lg">Complete in</br> 3 easy steps:</div>
+      <div class="p-10 text-black bg-slate-200 text-center opacity-75"> <i class="fa fa-map"></i>
+      </br>
+        Search by State</div>
+      <div class="p-10 text-black bg-slate-200 text-center opacity-75"><i class="fa fa-calendar"></i>
+      </br>Pick a Date</div>
+      <div class="flex justify-content-center text-center p-10 text-black bg-slate-200 opacity-75 rounded-r-lg"> ⛰ </br>Pick a Park</div>
+    </div>
+   
+    <!--Search below by state. </br>
+    Pick a date.</br>
+    We will provide you with a list of national parks to choose from and the weather forecast!</br>
+    
     This website is meant for you to quickly obtain information you will need to plan a trip to the National Park of your choice! 
   </div>
-  <div>
+  <div>-->
 
     <!-- SELECT STATE -->
     <form id="" class="text-center" >
-<<<<<<< HEAD
-      <input name="national-park" id="" class="border rounded text-black pt-2 pb-2 pl-20 pr-20" type="text" autofocus="true">
-      <button class="mb-20 hover:bg-orange-200 p-2" type="submit" id="btn">Search</button>
-=======
       <select name="national-park" id="" class="border rounded text-black pt-2 pb-2 pl-20 pr-20" type="text" autofocus="true" size="1"> 
         <option value="SEL">SELECT STATE</option>
         <option value="AL">Alabama</option>
@@ -85,13 +95,13 @@
         <option value="WI">Wisconsin</option>
         <option value="WY">Wyoming</option>
       </select>
-      <button class="mb-20 hover:bg-black p-2" type="submit" id="btn">Search</button>
+      <button class="mb-20 hover:bg-orange-200 p-2" type="submit" id="btn">Search</button>
       <!-- SELECT DATE -->
       <div class="form-group">
         <label for="modalDate">Select Date: </label>
-        <input class="border rounded text-black pt-2 pb-2 pl-20 pr-20" type="text" id="modalDate" placeholder="mm/dd/yyyy" autocomplete="off" />
+
+        <input class="border rounded text-black pt-2 pb-2 pl-20 pr-20" type="date" id="modalDate" placeholder="mm/dd/yyyy" autocomplete="off" />
       </div>
->>>>>>> b1d22a46042d089d50960842b11a84c81c50783b
     </form>
     
   </div>
@@ -99,9 +109,9 @@
 
 <!--<div class="text-[20px] p-10">Check out the most popular sites:</div>-->
 
-<section class="flex flex-wrap justify-center space-x-10 mx-20">
+<section class="flex flex-wrap justify-center space-x-10 mx-20 my-10">
 <div></div>
-<a href="./secondpage.html" target="_blank">
+<a href="./park.html" target="_blank">
 <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5">
   <h3 class="text-[24px]">Blue Ridge </br> Parkway</h3>
   <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/background.jpg">
@@ -121,7 +131,7 @@
 </a>
 
 
-<a href="./secondpage.html" target="_blank">
+<a href="./park.html" target="_blank">
 <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5">
   <h3 class="text-[24px]">Great Smokey </br> Mountains</h3>
   <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/great-smoky-mountains.jpeg">
@@ -140,7 +150,7 @@
 </div>
 </a>
 
-<a href="./secondpage.html" target="_blank">
+<a href="./park.html" target="_blank">
   <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5">
     <h3 class="text-[24px]">Golden Gate National </br>Recreation Area</h3>
     <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/golden-gate.jpeg">
@@ -159,7 +169,7 @@
   </div>
 </a>
 
-<a href="./secondpage.html" target="_blank">
+<a href="./park.html" target="_blank">
   <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5">
     <h3 class="text-[24px]">Gateway National </br>Recreation Area</h3>
     <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/gateway.jpeg">
@@ -178,7 +188,7 @@
   </div>
 </a>
 
-<a href="./secondpage.html" target="_blank">
+<a href="./park.html" target="_blank">
   <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5">
     <h3 class="text-[24px]">Lake Mead National </br>Recreation Area</h3>
     <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/lake-mead.jpeg">
@@ -197,7 +207,7 @@
   </div>
   </a>
 
-  <a href="./secondpage.html" target="_blank">
+  <a href="./park.html" target="_blank">
   <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5">
     <h3 class="text-[24px]">George Washington </br>Memorial Parkway</h3>
     <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/george-washington.jpeg">

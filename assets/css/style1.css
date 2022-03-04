@@ -30,11 +30,11 @@ body {
    position: -webkit-sticky;
     position: sticky;
     z-index: 9999;
+    
 }
 h3 {
     color: var(---tertiary-color)
 }   
-
 
 .hero-second {
     background-image: url("../images/background1.jpeg");
