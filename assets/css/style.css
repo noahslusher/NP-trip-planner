@@ -3,6 +3,14 @@ body {
   margin: 50px auto 0;
   font-family: open sans;
 }
+.hero {
+   background-image:url("../images/wallpaper.jpg"); 
+   background-position: center;
+   display: flex;
+   justify-content: flex-start;
+   height: 200px;
+   align-items: flex-end;
+}
 
 .park {
   margin-top: 50px;
