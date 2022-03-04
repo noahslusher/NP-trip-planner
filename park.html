@@ -14,22 +14,21 @@
   <body>
     <header></header>
     <section class="park-list">
-      <div class="park" data-num="1">
+      <div class="park" id="template">
         <h2></h2>
         <div class="park-info">
-          <div class="brief-intro">
-            <p>park intro</p>
-          </div>
           <div class="park-image"><img /></div>
 
           <!-- create google map - Start -->
-          <div class="park-map">
-            <iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=arches+national+park"> </iframe>
+          <div class="park-map"></div>
+          <div class="brief-intro">
+            <p class="info">park intro</p>
+            <p class="website">To Find More: <a href="">Enter Arches NP Website</a></p>
           </div>
           <!-- create google map - End -->
         </div>
         <div class="schedule">
-          <p>when to visit:</p>
+          <p>When to Visit:</p>
           <div class="weather-row">
             <div>
               <p></p>
@@ -98,8 +97,8 @@
         </div>
       </div>
     </section>
-    <section class="generate-trip">
-      <button>generate the trip</button>
+    <section id="generate-trip">
+      <a class="generateBtn">Generate Trip</a>
     </section>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
