@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arches National Park</title>
+    <title>Trips to National Parks</title>
     <link rel="stylesheet" href="./assets/css/normalize.css" />
-
+    <link rel="shortcut icon" href="./assets/images/favicon -4.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" />
 
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <header></header>
+    <header class=".secondpage-header"></header>
     <section class="park-list">
       <div class="park" id="template">
         <h2></h2>
@@ -23,12 +23,12 @@
           <div class="park-map"></div>
           <div class="brief-intro">
             <p class="info">park intro</p>
-            <p class="website">To Find More: <a href="">Enter Arches NP Website</a></p>
+            <p class="website">To Find More: <a href=""></a></p>
           </div>
           <!-- create google map - End -->
         </div>
         <div class="schedule">
-          <p>When to Visit:</p>
+          <p>Choose Dates:</p>
           <div class="weather-row">
             <div>
               <p></p>
@@ -98,8 +98,13 @@
       </div>
     </section>
     <section id="generate-trip">
-      <a class="generateBtn">Generate Trip</a>
+      <a class="generateBtn">View Your Trip</a>
+      <div class="currentPlan">
+        <p>Trip Plan</p>
+        <span class="cross">×</span>
+      </div>
     </section>
+
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- jQuery UI -->
