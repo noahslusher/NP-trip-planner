@@ -27,11 +27,6 @@ button {
 }
 
 a {
-  color: #666;
   text-decoration: none;
   cursor: pointer;
-}
-
-a:hover {
-  color: rgb(92, 163, 233);
 }

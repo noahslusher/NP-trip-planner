@@ -1,23 +1,27 @@
 body {
   width: 80%;
   margin: 50px auto 0;
+  font-family: open sans;
 }
 
 .park {
   margin-top: 50px;
-
   padding: 10px 0;
+}
+
+.park h2 {
+  font-size: 30px;
 }
 
 .park-info {
   display: flex;
   align-items: stretch;
   padding: 10px 0;
+  height: 300px;
 }
 
 .park-image {
   flex: 1;
-  padding: 0 10px;
 }
 
 .park-image img {
@@ -29,7 +33,7 @@ body {
 .brief-intro {
   background-color: pink;
   flex: 1;
-  display: flex;
+
   flex-wrap: wrap;
 }
 
@@ -41,6 +45,7 @@ body {
 
 .park-map {
   flex: 1;
+  padding: 0 10px;
 }
 
 .park-map iframe {
@@ -66,11 +71,15 @@ body {
 .weather-row {
   flex: 100%;
   display: flex;
+  flex-wrap: nowrap;
   align-content: space-between;
   font-size: 12px;
+  margin-top: 5px;
 }
 
 .weather-row > div {
+  border-radius: 5px;
+  text-align: center;
   background-color: rgb(24, 82, 136);
   flex: 1;
   margin-right: 15px;
@@ -121,4 +130,33 @@ body {
 
 .weather-row ul li:first-child {
   margin-top: 0;
+}
+/* generate trip button */
+
+#generate-trip {
+  text-align: center;
+}
+
+.generateBtn {
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  box-shadow: 2px 2px rgb(181, 185, 181);
+  background-color: red;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px 50px;
+  opacity: 1;
+  transition: 1s;
+}
+
+.generateBtn-active {
+  transform: translate(-50%, -20px) !important;
+}
+
+.plan-date,
+.plan-site {
+  padding: 0 !important;
 }
