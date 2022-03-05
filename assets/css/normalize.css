@@ -5,14 +5,13 @@
   box-sizing: border-box;
 }
 
-
 /* clear li style  */
 li {
   list-style: none;
 }
 
 img {
-  vertical-align: middle;
+  vertical-align: bottom;
 }
 
 input {
