@@ -91,8 +91,9 @@ for (let i = 0; i < 3; i++) {
       alt: parkName,
     });
   // google api: put in google map
-  $(parkDiv).find(".park-map")
-  .append('<div><iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe></div>');
+  $(parkDiv)
+    .find(".park-map")
+    .append('<div><iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe></div>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);

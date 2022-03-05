@@ -1,29 +1,36 @@
 body {
-  width: 80%;
-  margin: 50px auto 0;
+  width: 90%;
+  margin: 0 auto;
   font-family: Open sans;
-  background-color: rgb(253, 253, 253);
+  background-color: rgb(245, 245, 245);
 }
 
 .park {
   margin-top: 50px;
-  padding: 10px 0;
-  background: url("https://www.nps.gov/common/uploads/structured_data/010A933C-95B1-CBCD-D6D64D47D5B81E76.jpg");
+  padding: 20px 30px;
+  background: url("https://www.nps.gov/common/uploads/structured_data/010A933C-95B1-CBCD-D6D64D47D5B81E76.jpg") no-repeat;
 }
 
 .park h2 {
-  font-size: 30px;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .park-info {
   display: flex;
   align-items: stretch;
-  padding: 10px 0;
-  height: 300px;
+
+  height: 350px;
 }
 
 .park-image {
-  flex: 1;
+  flex: 1.5;
+}
+
+.cover {
+  overflow: hidden;
+  border: 10px ridge #f4e9e0;
 }
 
 .park-image img {
@@ -35,13 +42,20 @@ body {
 .brief-intro {
   /* background-color: pink; */
   flex: 2;
+  padding: 0 10px;
 
   margin-left: 10px;
-
   flex-wrap: wrap;
 }
 
+.brief-intro .info {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
 .brief-intro p {
+  font-size:20px;
   margin-bottom: 5px;
   /* background-color: pink; */
   flex: 1;
@@ -52,18 +66,17 @@ body {
   padding: 0 10px;
 }
 .park-map div {
-  height: 255px;
+  height: 325px;
 }
-.park-map > * {
-  /* flex: 0 0 100%; */
-}
-.park-map div {
-  /* height: 100%; */
+
+.park-map h3 {
+  margin-bottom: 10px;
 }
 
 .park-map iframe {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 }
 
 /* when to visit area - Start */
