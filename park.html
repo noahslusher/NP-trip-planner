@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trips to National Parks</title>
     <link rel="stylesheet" href="./assets/css/normalize.css" />
-    <link rel="shortcut icon" href="./assets/images/favicon -4.ico">
+    <link rel="shortcut icon" href="./assets/images/favicon -4.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" />
 
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -17,18 +17,24 @@
       <div class="park" id="template">
         <h2></h2>
         <div class="park-info">
-          <div class="park-image"><img /></div>
+          <div class="park-image cover"><img /></div>
 
-          <!-- create google map - Start -->
-          <div class="park-map"></div>
           <div class="brief-intro">
-            <p class="info">park intro</p>
-            <p class="website">To Find More: <a href=""></a></p>
+            <p class="park-describe"></p>
+            <p class="what-to-expect"><b>Activities</b>: <span></span></p>
+
+            <p class="hours"><b>Operation Hours</b>: <span></span></p>
+
+            <p class="fee"><b>Entrance Fee</b>: <img src="./assets/icons/vehicle.svg" alt="vehicle icon" />$<span class="vehicle"></span>|<img src="./assets/icons/motorcycle.svg" alt="motorcycle icon" />$<span class="motorcycle"></span>|<img src="./assets/icons/bibycle.svg" alt="bibycle icon" />$<span class="bicycle"></span></p>
+
+            <p class="annual-pass"><b>Annual Pass</b>: $<span></span></p>
+            <p class="park-contact"><b>Contact</b>: <a class="tel"></a> | <a class="email"></a></p>
+
+            <p class="website"><b> Find More</b>: <a href=""></a></p>
           </div>
-          <!-- create google map - End -->
         </div>
         <div class="schedule">
-          <p>Choose Dates:</p>
+          <p>When To Visit:</p>
           <div class="weather-row">
             <div>
               <p></p>
@@ -95,6 +101,10 @@
             </div>
           </div>
         </div>
+        <!-- create google map - Start -->
+        <div class="park-map">
+        </div>
+        <!-- create google map - End -->
       </div>
     </section>
     <section id="generate-trip">

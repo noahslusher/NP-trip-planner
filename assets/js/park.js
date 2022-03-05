@@ -75,14 +75,14 @@ var parkList = nationalParks[getState];
 
 function createParkSection() {
   // create park section according to the parkCodeList.length
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     $(".park-list").append($("#template").clone().attr("id", ""));
   }
   $("#template").remove();
 }
 createParkSection();
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 2; i++) {
   var parkName = parkList[i].split("|")[0].trim();
   var parkDiv = $(".park").eq(i);
   var parkCode = parkList[i].split("|")[1].trim();
@@ -91,6 +91,7 @@ for (let i = 0; i < 3; i++) {
     .find("h2")
     .text(i + 1 + ". " + parkName);
   // NP api
+  getNP(parkCode, i);
 
   //put in park website
   $(parkDiv)
@@ -111,7 +112,7 @@ for (let i = 0; i < 3; i++) {
   // google api: put in google map
   $(parkDiv)
     .find(".park-map")
-    .html('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
+    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -140,11 +141,10 @@ function getGeo(parkName, i) {
 }
 
 // datepicker
-$( function() {
-  $( "#datepicker" ).datepicker().addClass("font-color: blue");
-    minDate: 1
-} );
-
+$(function () {
+  $("#datepicker").datepicker().addClass("font-color: blue");
+  minDate: 1;
+});
 
 // return future date according to tomorrow(i=1), the day after tomorrow(i=2) ,etc
 function displayDate(i) {
@@ -184,6 +184,59 @@ function displayFuture(data, i, weather, divIndex) {
     });
 }
 
+// National park api
+function getNP(parkCode, i) {
+  fetch("https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=0udE9V2GRj3cRahVJ120KpyLcjQ4YXlVgLpPg4RQ")
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      //string data: description
+      var description = result.data[0].description.split(".")[0] + ".";
+      $(".park-describe").eq(i).text(description);
+      //string multiple data: activities
+      var activities = "";
+      result.data[0].activities.forEach((el, index) => {
+        if (index > 5) {
+          return;
+        }
+        activities += el.name + ", ";
+        if (index === 5) {
+          activities += el.name + " etc.";
+        }
+      });
+      $(".what-to-expect span").eq(i).text(activities);
+      //string data: hours
+      var operatingHours = result.data[0].operatingHours[0].description.split(".")[0] + ".";
+      //string multiple data: entrance fees
+      $(".hours span").eq(i).text(operatingHours);
+
+      var vehicleFee = result.data[0].entranceFees[0].cost.split(".")[0];
+      console.log(typeof vehicleFee);
+
+      $(".fee .vehicle").eq(i).text(vehicleFee);
+      var motorcycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
+      $(".fee .motorcycle").eq(i).text(motorcycleFee);
+      var bicycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
+      $(".fee .bicycle").eq(i).text(bicycleFee);
+      //string data: entrance pass
+      var annualPass = result.data[0].entrancePasses[0].cost.split(".")[0];
+      $(".annual-pass span").eq(i).text(annualPass);
+      //string data: contact phone
+      var contactPhone = result.data[0].contacts.phoneNumbers[0].phoneNumber;
+      $(".park-contact .tel")
+        .eq(i)
+        .text(contactPhone)
+        .attr("href", "tel:" + contactPhone);
+      //string data: contact email
+      var contactEmail = result.data[0].contacts.emailAddresses[0].emailAddress;
+      $(".park-contact .email")
+        .eq(i)
+        .text(contactEmail)
+        .attr("href", "mailto:" + contactEmail);
+    });
+}
+
 // get weather info
 function getWeather(lat, lon, divIndex) {
   // var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
@@ -216,15 +269,21 @@ $(".weather-row").on("click", "div", function () {
   if ($(".currentPlan").hasClass("currentPlan-active")) {
     return;
   }
-
+  // change the color of li
+  $(this).toggleClass("active");
+  //change the text of button
   $(".generateBtn").addClass("generateBtn-update");
+
   if (!localStorage.getItem("tripPlan")) {
-    $(".generateBtn").text("Save Your Trip");
+    if ($(".active").length === 0) {
+      $(".generateBtn").removeClass("generateBtn-update").text("Create Your First Trip");
+    } else {
+      $(".generateBtn").text("Save Your Trip");
+    }
+    return;
   } else {
     $(".generateBtn").text("Update Your Trip");
   }
-
-  $(this).toggleClass("active");
 
   if ($(".generateBtn").text() === "Update Your Trip" && $(".active").length === 0) {
     $(".generateBtn").removeClass("generateBtn-update").text("View Your Trip");
@@ -235,6 +294,7 @@ $(".weather-row").on("click", "div", function () {
 $(".generateBtn").on("click", function () {
   if ($(".generateBtn").text() === "Create Your First Trip") {
     $(".currentPlan").addClass("currentPlan-active");
+    $(".plan-date").remove();
     $(".currentPlan").append("<div><p class='plan-date'>" + "To generate your first trip, please select the dates you would like to visit. " + "</p></div>");
     return;
   }
@@ -289,16 +349,12 @@ function loadTrip() {
 
       $(".currentPlan").append("<div><p class='plan-date'>" + tripDate + "</p></div>");
 
-      console.log(tripLocations);
-
       $.each(tripLocations, function (index, el) {
         var location = el.split("|")[0].trim();
-        console.log(location);
+
         var weather = el.split("|")[1].trim();
 
         $(".currentPlan>div:last-child").append("<p class='plan-site'>" + location + " <img src='./assets/icons/" + weather + ".svg' alt='" + weather + "'/></p>");
-
-        console.log(weather);
       });
     }
   }
