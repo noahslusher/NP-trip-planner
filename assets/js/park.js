@@ -3,7 +3,7 @@ var nationalParks = {
   AK: [],
   AZ: ["Grand Canyon National Park | grca", "Petrified Forest National Park | pefo", "Saguaro National Park | sagu"],
   AR: ["Hot Springs National Park | hosp"],
-  CA: ["Channel Islands National Park |chis", "Death Valley National Park | deva", "Joshua Tree National Park | jotr", "Kings Canyon National Park | kica", "Lassen Volcanic National Park | lavo", "Redwood National Park | redw", "Sequoia National Park | sequ", "Yosemite National Park | yose"],
+  CA: ["Channel Islands National Park | chis", "Death Valley National Park | deva", "Joshua Tree National Park | jotr", "Lassen Volcanic National Park | lavo", "Redwood National Park | redw", "Sequoia & Kings Canyon National Park | seki", "Yosemite National Park | yose"],
   CO: ["Black Canyon of the Gunnison National Park | blca", "Great Sand Dunes National Park | grsa", "Mesa Verde National Park | meve", "Rocky Mountain National Park | romo"],
   CT: [],
   DE: [],
@@ -51,20 +51,20 @@ var nationalParks = {
   WY: ["Grand Teton National Park | grte", "Yellowstone National Park | yell"],
 };
 
-var getState = "UT";
+var getState = "CA";
 var getDate = new Date();
 var parkList = nationalParks[getState];
 
 function createParkSection() {
   // create park section according to the parkCodeList.length
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 8; i++) {
     $(".park-list").append($("#template").clone().attr("id", ""));
   }
   $("#template").remove();
 }
 createParkSection();
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 8; i++) {
   var parkName = parkList[i].split("|")[0].trim();
   var parkDiv = $(".park").eq(i);
   var parkCode = parkList[i].split("|")[1].trim();
@@ -221,7 +221,7 @@ function getNP(parkCode, i) {
 
 // get weather info
 function getWeather(lat, lon, divIndex) {
-  // var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
+  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
 
   promise2
     .then((response) => {
