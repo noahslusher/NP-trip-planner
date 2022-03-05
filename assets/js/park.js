@@ -51,38 +51,37 @@ var nationalParks = {
   WY: ["Grand Teton National Park | grte", "Yellowstone National Park | yell"],
 };
 
+// //added users input to console
+// $(function () {
+//   $("#datepicker").datepicker();
+//   $("#datepicker").on("change", function () {
+//     var selected = $(this).val();
+//     console.log(selected);
+//   });
+// });
+// var planMyTrip = document.getElementById("submit-btn");
+// var userInput = function () {
+//   var select = document.getElementById("userState");
+//   var value = select.options[select.selectedIndex].value;
+//   console.log(value);
+// };
 
-//added users input to console
-$(function() {
-    $("#datepicker").datepicker();
-    $("#datepicker").on("change",function(){
-        var selected = $(this).val();
-        console.log(selected);
-    });
-});
-var planMyTrip = document.getElementById('submit-btn')
-var userInput = function() {
-var select = document.getElementById('userState');
-var value = select.options[select.selectedIndex].value;
-console.log(value);
-}
+// planMyTrip.addEventListener("click", userInput);
 
-planMyTrip.addEventListener('click', userInput)
-
-var getState = "UT";
+var getState = "CA";
 var getDate = new Date();
 var parkList = nationalParks[getState];
 
 function createParkSection() {
   // create park section according to the parkCodeList.length
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < parkList.length; i++) {
     $(".park-list").append($("#template").clone().attr("id", ""));
   }
   $("#template").remove();
 }
 createParkSection();
 
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < parkList.length; i++) {
   var parkName = parkList[i].split("|")[0].trim();
   var parkDiv = $(".park").eq(i);
   var parkCode = parkList[i].split("|")[1].trim();
