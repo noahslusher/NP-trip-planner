@@ -1,99 +1,120 @@
 :root {
-    ---primary-color: rgb(127, 144, 136);
-    ---secondary-color: rgb(130, 253, 200);
-    ---tertiary-color: rgb(250, 211, 144);
+  ---primary-color: rgb(127, 144, 136);
+  ---secondary-color: rgb(130, 253, 200);
+  ---tertiary-color: rgb(250, 211, 144);
+}
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  font:Italic 2em Georgia;
+}
+.info span {
+  font-style: normal;
 }
 
 body {
-    color:white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-image: url("../images/background1.jpg");
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    
+  display: flex;
+  flex-direction: column;
 
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../images/wallpaper.jpg") no-repeat center / cover;
+  filter: brightness(60%);
+
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  /* background: rgba(0, 0, 0, 0.1); */
+}
+
+.mountain-icon {
+  margin-bottom: 8px;
+}
+
+.mountain-icon img {
+  margin: 0 auto;
 }
 
 .hero {
-    color: var(---tertiary-color);
-   background-position: center;
-   display: flex;
-   justify-content: flex-start;
-   background-image: url("../images/background1.jpg");
-   height: 200px;
-   top: 0;
-   background-size: cover;
-    background-attachment: fixed;
-    background-position: 50%;
-   align-items: flex-end;
-   position: -webkit-sticky;
-    position: sticky;
-    z-index: 9999;
-    
+  color: var(---tertiary-color);
 }
+
 h3 {
-    color: var(---tertiary-color)
-}   
+  color: var(---tertiary-color);
+}
 
 .hero-second {
-    background-image: url("../images/background1.jpg");
-    height:200px;
-    width: 100%;
-    
+  /* background-image: url("../images/wallpaper.jpg"); */
+  height: 200px;
+  width: 100%;
 }
 
 button {
-    border: solid 1px white;
-    border-radius: 5px;
-    padding: 0 10px 0 10px;
-
+  border: solid 1px white;
+  border-radius: 5px;
+  padding: 0 10px 0 10px;
 }
 
 @media (max-width: 820px) {
-    .date-text {
-        font-size: 22px;
-    }
-    .cards{
-        margin: auto;
-        width: 100%;
-        padding-right: 50px;
-    }
-}
-
-@media (max-width: 570px) {
-.app-title{
-    display:flex;
-    justify-content: flex-start;
-    font-size: 55px;
-}
-.info {
-    font-size: 24px;
-    margin: 0 30px 0 30px;
-}
-.steps {
-    display: flex;
-    flex-direction: column;
-    flex: flex-wrap;
-
-}
-.date-text {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 5px;
-}
-.form-group {
-    padding-bottom: 20px;
-    margin-left: 15px;
-}
-
-.state {
-   padding-right: 16px;
-}
-.cards{
+  .date-text {
+    font-size: 22px;
+  }
+  .cards {
     margin: auto;
     width: 100%;
     padding-right: 50px;
+  }
 }
+
+@media (max-width: 570px) {
+  .app-title {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 55px;
+  }
+  .info {
+    font-size: 24px;
+    margin: 0 30px 0 30px;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    flex: flex-wrap;
+  }
+  .date-text {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+  }
+  .pick-date {
+    padding-bottom: 20px;
+    margin-left: 15px;
+  }
+
+  .pick-date input {
+    padding-left: 20px;
+  }
+
+  .state {
+    padding-right: 16px;
+  }
+  .cards {
+    margin: auto;
+    width: 100%;
+    padding-right: 50px;
+  }
 }
