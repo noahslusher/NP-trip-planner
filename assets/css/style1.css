@@ -100,31 +100,56 @@ button:hover {
     font-size: 24px;
     margin: 0 30px 0 30px;
   }
+  /* step area style  */
   .steps {
     display: flex;
     flex-direction: column;
     flex: flex-wrap;
+    align-items: center;
   }
-  .date-text {
+
+  .steps > div {
     display: flex;
     justify-content: center;
-    padding-bottom: 5px;
+    align-items: center;
+    width: 80%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 0;
   }
+
+  .steps > div p {
+    margin-left: 10px;
+  }
+
+  .mountain-icon img {
+    width: 70%;
+  }
+
+  /* picker style  */
+  form > * {
+    margin-bottom: 10px;
+  }
+
   .pick-date {
-    padding-bottom: 20px;
-    margin-left: 15px;
+    flex: 0 0 60%;
   }
 
-  .pick-date input {
-    padding-left: 20px;
+  .pick-state {
+    flex: 0 0 60%;
+    text-align: center;
+  }
+  .submit-button {
+    flex: 0 0 60%;
+    margin-top: 0;
+  }
+  .submit-button button {
+    width: 100%;
   }
 
-  .state {
-    padding-right: 16px;
-  }
-  .cards {
+  /* .cards {
     margin: auto;
     width: 100%;
     padding-right: 50px;
-  }
+  } */
 }
