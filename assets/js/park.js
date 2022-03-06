@@ -68,7 +68,7 @@ var nationalParks = {
 
 // planMyTrip.addEventListener("click", userInput);
 
-var getState = "CA";
+var getState = "NM";
 var getDate = new Date();
 var parkList = nationalParks[getState];
 
@@ -111,7 +111,7 @@ for (let i = 0; i < parkList.length; i++) {
   // google api: put in google map
   $(parkDiv)
     .find(".park-map")
-    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
+    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -119,7 +119,7 @@ for (let i = 0; i < parkList.length; i++) {
 
 function getGeo(parkName, i) {
   // get national park's geo info
-  var promise = fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + parkName + "&key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg");
+  var promise = fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + parkName.replace(/&/g, "%26") + "&key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg");
 
   promise
     .then((response) => {
@@ -138,8 +138,6 @@ function getGeo(parkName, i) {
       console.log("geo-api connect error", error);
     });
 }
-
-
 
 // return future date according to tomorrow(i=1), the day after tomorrow(i=2) ,etc
 function displayDate(i) {
@@ -197,26 +195,45 @@ function getNP(parkCode, i) {
         }
         activities += el.name + ", ";
         if (index === 5) {
-          activities += el.name + " etc.";
+          activities += el.name + ", etc.";
         }
       });
       $(".what-to-expect span").eq(i).text(activities);
       //string data: hours
       var operatingHours = result.data[0].operatingHours[0].description.split(".")[0] + ".";
-      //string multiple data: entrance fees
+
       $(".hours span").eq(i).text(operatingHours);
+      //string multiple data: entrance fees
+      console.log(typeof parseInt(result.data[0].entranceFees[0].cost));
+      console.log(parseInt(result.data[0].entranceFees[0].cost));
+      console.log(parseInt(result.data[0].entranceFees[0].cost) !== 0);
+      // check whether fee is 0
+      if (parseInt(result.data[0].entranceFees[0].cost) !== 0) {
+        var vehicleFee = result.data[0].entranceFees[0].cost.split(".")[0];
+        $(".fee .vehicle")
+          .eq(i)
+          .text("$" + vehicleFee + "|");
+        var motorcycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
+        $(".fee .motorcycle")
+          .eq(i)
+          .text("$" + motorcycleFee + "|");
+        var bicycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
+        $(".fee .bicycle")
+          .eq(i)
+          .text("$" + bicycleFee);
 
-      var vehicleFee = result.data[0].entranceFees[0].cost.split(".")[0];
-      console.log(typeof vehicleFee);
-
-      $(".fee .vehicle").eq(i).text(vehicleFee);
-      var motorcycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
-      $(".fee .motorcycle").eq(i).text(motorcycleFee);
-      var bicycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
-      $(".fee .bicycle").eq(i).text(bicycleFee);
-      //string data: entrance pass
-      var annualPass = result.data[0].entrancePasses[0].cost.split(".")[0];
-      $(".annual-pass span").eq(i).text(annualPass);
+        //string data: entrance pass
+        var annualPass = result.data[0].entrancePasses[0].cost.split(".")[0];
+        $(".annual-pass span").eq(i).text(annualPass);
+      } // if fee is 0, hide entranceFee and pass
+      else {
+        $(".fee")
+          .eq(i)
+          .find("b")
+          .after(result.data[0].entranceFees[0].description.split(".")[0] + ".");
+        $(".fee").eq(i).find("img, span").hide();
+        $(".annual-pass").eq(i).hide();
+      }
       //string data: contact phone
       var contactPhone = result.data[0].contacts.phoneNumbers[0].phoneNumber;
       $(".park-contact .tel")
