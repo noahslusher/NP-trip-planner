@@ -1,253 +1,118 @@
 <!DOCTYPE html>
 <html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="./assets/css/style1.css" />
+    <link rel="shortcut icon" href="./assets/images/favicon -4.ico" />
+    <title>Park Advisor</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
-  <link rel="stylesheet" href="./assets/css/style1.css">
- <link rel="shortcut icon" href="./assets/images/favicon -4.ico">
- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
- <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-<!--⛰ icon to use?-->
-  <title>Park Advisor</title>
+  <body>
+    <header class="hero">
+      <h1 class="mx-auto app-title text-[84px]">Park Advisor</h1>
+    </header>
 
-</head>
+    <main class="flex-col space-y-7">
+      <p class="info text-center text-[32px]">" The mountains are calling and I must go."<span> — John Muir</span></p>
 
-<body>
+      <div class="steps flex justify-center justify-content-between text-[30px] px-10 mx-10">
+        <div class="p-10 text-center text-black bg-orange-200 opacity-75 rounded-l-lg">
+          Complete in
+          <br />3 easy steps:
+        </div>
+        <div class="p-10 text-black bg-slate-200 text-center opacity-75">
+          <i class="fa fa-calendar"></i>
+          <p>Pick a Date</p>
+        </div>
+        <div class="p-10 text-black bg-slate-200 text-center opacity-75">
+          <i class="fa fa-map"></i>
+          <p>Search by State</p>
+        </div>
+        <div class="p-10 text-black bg-slate-200 text-center opacity-75 rounded-r-lg">
+          <div class="mountain-icon"><img src="./assets/icons/mountain.svg" alt="mountain-icon" /></div>
+          <p>View the Parks</p>
+        </div>
+      </div>
 
-  <header class="hero">
-    <h1 class="app-title text-[84px] pl-3">Park Advisor </h1>
-  </header>
-
-<main class ="flex-col space-y-7">
-    <h2 class="info text-center text-[24px] pt-10 italic">What are you waiting for? Plan your next adventure!</h2>
-    <div class="steps flex justify-center justify-content-between text-[30px] px-10 mx-10">
-      <div class="p-10 text-black bg-orange-200 opacity-75 rounded-l-lg">Complete in</br> 3 easy steps:</div>
-      <div class="p-10 text-black bg-slate-200 text-center opacity-75"><i class="fa fa-calendar"></i>
-      </br>Pick a Date</div>
-      <div class="p-10 text-black bg-slate-200 text-center opacity-75"> <i class="fa fa-map"></i>
-      </br>
-        Search by State</div>
-      <div class="p-10 text-black bg-slate-200 text-center opacity-75 rounded-r-lg"> ⛰ 
-      </br>View the Parks</div>
-    </div>
-   
-    <!--Search below by state. </br>
-    Pick a date.</br>
-    We will provide you with a list of national parks to choose from and the weather forecast!</br>
-    
-    This website is meant for you to quickly obtain information you will need to plan a trip to the National Park of your choice! 
-  </div>
-  <div>-->
-
-    <!-- SELECT STATE -->
-    <form action="./park.html" id="state" class="text-center flex flex-wrap justify-center" >
-     <!-- SELECT DATE -->
-     <div class="form-group">
-      <label class= "date-text" for="modalDueDate">Select Date: </label>
-      <input type="text" id="datepicker" placeholder="mm/dd/yyyy" autocomplete="off" class="border rounded text-black py-3 pl-4 mr-5" />
-    </div>
-
-      <select name="national-park" id="userState" class="state border rounded text-black px-10 py-3" type="text" autofocus="true" size="1"> 
-        <option value="SEL">SELECT STATE</option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
-        <option value="CA">California</option>
-        <option value="CO">Colorado</option>
-        <option value="CT">Connecticut</option>
-        <option value="DE">Delaware</option>
-        <option value="DC">Dist of Columbia</option>
-        <option value="FL">Florida</option>
-        <option value="GA">Georgia</option>
-        <option value="HI">Hawaii</option>
-        <option value="ID">Idaho</option>
-        <option value="IL">Illinois</option>
-        <option value="IN">Indiana</option>
-        <option value="IA">Iowa</option>
-        <option value="KS">Kansas</option>
-        <option value="KY">Kentucky</option>
-        <option value="LA">Louisiana</option>
-        <option value="ME">Maine</option>
-        <option value="MD">Maryland</option>
-        <option value="MA">Massachusetts</option>
-        <option value="MI">Michigan</option>
-        <option value="MN">Minnesota</option>
-        <option value="MS">Mississippi</option>
-        <option value="MO">Missouri</option>
-        <option value="MT">Montana</option>
-        <option value="NE">Nebraska</option>
-        <option value="NV">Nevada</option>
-        <option value="NH">New Hampshire</option>
-        <option value="NJ">New Jersey</option>
-        <option value="NM">New Mexico</option>
-        <option value="NY">New York</option>
-        <option value="NC">North Carolina</option>
-        <option value="ND">North Dakota</option>
-        <option value="OH">Ohio</option>
-        <option value="OK">Oklahoma</option>
-        <option value="OR">Oregon</option>
-        <option value="PA">Pennsylvania</option>
-        <option value="RI">Rhode Island</option>
-        <option value="SC">South Carolina</option>
-        <option value="SD">South Dakota</option>
-        <option value="TN">Tennessee</option>
-        <option value="TX">Texas</option>
-        <option value="UT">Utah</option>
-        <option value="VT">Vermont</option>
-        <option value="VA">Virginia</option>
-        <option value="WA">Washington</option>
-        <option value="WV">West Virginia</option>
-        <option value="WI">Wisconsin</option>
-        <option value="WY">Wyoming</option>
-      </select>
-      
-    </form>
-      <!-- Insert submit button -->
-    <div class="flex justify-center">
-      <button class="mt-3 hover:bg-orange-200 hover:text-black p-3 text-[22px]" id="submit-btn"  type="submit">Plan My Trip!</button>
-    </div>
-    
-  </div>
-</main>
-
-<!--<div class="text-[20px] p-10">Check out the most popular sites:</div>-->
-
-<section class="cards flex flex-wrap justify-center space-x-10 mx-20 my-10">
-<div></div>
-<a href="./park.html" target="_blank">
-<div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5 bg-slate-500 opacity-75">
-  <h3 class="text-[24px]">Blue Ridge </br> Parkway</h3>
-  <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/background.jpg">
-  <p>A Blue Ridge Parkway experience is 
-  </br>unlike any other: a slow-paced and
-  </br>relaxing drive revealing stunning 
-  </br>long-range vistas and close-up views 
-  </br>of the rugged mountains and pastoral 
-  </br>landscapes of the Appalachian 
-  </br>Highlands. The Parkway meanders for 
-  </br>469 miles, protecting a diversity of
-  </br> plants and animals, and providing 
-  </br>opportunities for enjoying all that 
-  </br>makes this region of the country so 
-  </br>special.</p>
-</div>
-</a>
-
-
-<a href="./park.html" target="_blank">
-<div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5 bg-slate-500 opacity-75">
-  <h3 class="text-[24px]">Great Smokey </br> Mountains</h3>
-  <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/great-smoky-mountains.jpg">
-  <p>A Blue Ridge Parkway experience is 
-  </br>unlike any other: a slow-paced and
-  </br>relaxing drive revealing stunning 
-  </br>long-range vistas and close-up views 
-  </br>of the rugged mountains and pastoral 
-  </br>landscapes of the Appalachian 
-  </br>Highlands. The Parkway meanders for 
-  </br>469 miles, protecting a diversity of
-  </br> plants and animals, and providing 
-  </br>opportunities for enjoying all that 
-  </br>makes this region of the country so 
-  </br>special.</p>
-</div>
-</a>
-
-<a href="./park.html" target="_blank">
-  <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5 bg-slate-500 opacity-75">
-    <h3 class="text-[24px]">Golden Gate National </br>Recreation Area</h3>
-    <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/golden-gate.jpg">
-    <p>A Blue Ridge Parkway experience is 
-    </br>unlike any other: a slow-paced and
-    </br>relaxing drive revealing stunning 
-    </br>long-range vistas and close-up views 
-    </br>of the rugged mountains and pastoral 
-    </br>landscapes of the Appalachian 
-    </br>Highlands. The Parkway meanders for 
-    </br>469 miles, protecting a diversity of
-    </br> plants and animals, and providing 
-    </br>opportunities for enjoying all that 
-    </br>makes this region of the country so 
-    </br>special.</p>
-  </div>
-</a>
-
-<a href="./park.html" target="_blank">
-  <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5 bg-slate-500 opacity-75">
-    <h3 class="text-[24px]">Gateway National </br>Recreation Area</h3>
-    <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/gateway.jpg">
-    <p>A Blue Ridge Parkway experience is 
-    </br>unlike any other: a slow-paced and
-    </br>relaxing drive revealing stunning 
-    </br>long-range vistas and close-up views 
-    </br>of the rugged mountains and pastoral 
-    </br>landscapes of the Appalachian 
-    </br>Highlands. The Parkway meanders for 
-    </br>469 miles, protecting a diversity of
-    </br> plants and animals, and providing 
-    </br>opportunities for enjoying all that 
-    </br>makes this region of the country so 
-    </br>special.</p>
-  </div>
-</a>
-
-<a href="./park.html" target="_blank">
-  <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5 bg-slate-500 opacity-75">
-    <h3 class="text-[24px]">Lake Mead National </br>Recreation Area</h3>
-    <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/lake-mead.jpg">
-    <p>A Blue Ridge Parkway experience is 
-    </br>unlike any other: a slow-paced and
-    </br>relaxing drive revealing stunning 
-    </br>long-range vistas and close-up views 
-    </br>of the rugged mountains and pastoral 
-    </br>landscapes of the Appalachian 
-    </br>Highlands. The Parkway meanders for 
-    </br>469 miles, protecting a diversity of
-    </br> plants and animals, and providing 
-    </br>opportunities for enjoying all that 
-    </br>makes this region of the country so 
-    </br>special.</p>
-  </div>
-  </a>
-
-  <a href="./park.html" target="_blank">
-  <div id ="card-1" class="card flex-col grow-4 p-5 border rounded mt-5 bg-slate-500 opacity-75">
-    <h3 class="text-[24px]">George Washington </br>Memorial Parkway</h3>
-    <img class="object-fill mx-auto h-48 w-60 rounded" src="./assets/images/george-washington.jpg">
-    <p>A Blue Ridge Parkway experience is 
-    </br>unlike any other: a slow-paced and
-    </br>relaxing drive revealing stunning 
-    </br>long-range vistas and close-up views 
-    </br>of the rugged mountains and pastoral 
-    </br>landscapes of the Appalachian 
-    </br>Highlands. The Parkway meanders for 
-    </br>469 miles, protecting a diversity of
-    </br> plants and animals, and providing 
-    </br>opportunities for enjoying all that 
-    </br>makes this region of the country so 
-    </br>special.</p>
-  </div>
-  </a>
-
-</section>
-
-<footer class="p-5 mt-10 text-orange-200">
-  Made with ❤️ by Neo J., Noah S., Cade W. & Madison S.
-</footer>
-
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- jQuery UI -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="./assets/js/homepage.js"></script>
-  
-
-  <script src="./assets/js/park.js"></script>
-</body>
-
+      <form action="./park.html" id="state" class="text-center flex flex-wrap justify-center">
+        <!-- Select Date Start-->
+        <div class="pick-date mx-2">
+          <input type="text" id="datepicker" placeholder="DD/MM/YY" autocomplete="off" class="border rounded text-black text-center py-3 mr-5" />
+        </div>
+        <!-- Select Date End-->
+        <!-- Select State Start-->
+        <div class="pick-state mx-2">
+          <select name="national-park" id="userState" class="state border rounded text-center text-black px-10 py-3" type="text" autofocus="true" size="1">
+            <option class="select-state" value="SEL">SELECT STATE</option>
+            <option value="AL">Alabama</option>
+            <!-- <option value="AK">Alaska</option> -->
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <!-- <option value="CT">Connecticut</option> -->
+            <!-- <option value="DE">Delaware</option> -->
+            <option value="DC">Dist of Columbia</option>
+            <option value="FL">Florida</option>
+            <!-- <option value="GA">Georgia</option> -->
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <!-- <option value="IL">Illinois</option> -->
+            <!-- <option value="IN">Indiana</option> -->
+            <!-- <option value="IA">Iowa</option> -->
+            <!-- <option value="KS">Kansas</option> -->
+            <option value="KY">Kentucky</option>
+            <!-- <option value="LA">Louisiana</option> -->
+            <option value="ME">Maine</option>
+            <!-- <option value="MD">Maryland</option> -->
+            <!-- <option value="MA">Massachusetts</option> -->
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <!-- <option value="MS">Mississippi</option> -->
+            <!-- <option value="MO">Missouri</option> -->
+            <option value="MT">Montana</option>
+            <!-- <option value="NE">Nebraska</option> -->
+            <option value="NV">Nevada</option>
+            <!-- <option value="NH">New Hampshire</option> -->
+            <!-- <option value="NJ">New Jersey</option> -->
+            <option value="NM">New Mexico</option>
+            <!-- <option value="NY">New York</option> -->
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <!-- <option value="OK">Oklahoma</option> -->
+            <option value="OR">Oregon</option>
+            <!-- <option value="PA">Pennsylvania</option> -->
+            <!-- <option value="RI">Rhode Island</option> -->
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <!-- <option value="VT">Vermont</option> -->
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <!-- <option value="WV">West Virginia</option> -->
+            <!-- <option value="WI">Wisconsin</option> -->
+            <option value="WY">Wyoming</option>
+          </select>
+        </div>
+        <!-- Select State End-->
+        <!-- Insert submit button -->
+        <div class="submit-button mt-8">
+          <button class=" hover:text-black p-3 text-[22px]" type="submit">Plan My Trip!</button>
+        </div>
+      </form>
+    </main>
+  </body>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <!-- jQuery UI -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="./assets/js/index.js"></script>
 </html>
