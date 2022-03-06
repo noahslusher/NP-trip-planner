@@ -68,7 +68,7 @@ var nationalParks = {
 
 // planMyTrip.addEventListener("click", userInput);
 
-var getState = "NM";
+var getState = "KY";
 var getDate = new Date();
 var parkList = nationalParks[getState];
 
@@ -181,6 +181,7 @@ function displayFuture(data, i, weather, divIndex) {
 function getNP(parkCode, i) {
   fetch("https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=0udE9V2GRj3cRahVJ120KpyLcjQ4YXlVgLpPg4RQ")
     .then((response) => {
+      console.log(response)
       return response.json();
     })
     .then((result) => {
@@ -251,7 +252,7 @@ function getNP(parkCode, i) {
 
 // get weather info
 function getWeather(lat, lon, divIndex) {
-  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
+  //var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
 
   promise2
     .then((response) => {

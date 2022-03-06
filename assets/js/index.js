@@ -8,3 +8,5 @@ $(function () {
   $("#datepicker").datepicker().addClass("font-color: blue");
   minDate: 1;
 });
+
+
