@@ -68,7 +68,7 @@ var nationalParks = {
 
 // planMyTrip.addEventListener("click", userInput);
 
-var getState = "AR";
+var getState = "TX";
 var getDate = new Date();
 var parkList = nationalParks[getState];
 
@@ -109,9 +109,9 @@ for (let i = 0; i < parkList.length; i++) {
       alt: parkName,
     });
   // google api: put in google map
-  $(parkDiv)
-    .find(".park-map")
-    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '"></iframe>');
+  // $(parkDiv)
+  //   .find(".park-map")
+  //   .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -209,7 +209,7 @@ function getNP(parkCode, i) {
       function feeAndPass() {
         console.log(parseInt(result.data[0].entranceFees[0].cost) !== 0);
 
-        // check whether fee is 0
+        // if fee is not 0, display fee and pass
         if (parseInt(result.data[0].entranceFees[0].cost) !== 0) {
           var vehicleFee;
           var motorcycleFee;
@@ -219,13 +219,13 @@ function getNP(parkCode, i) {
 
           // exception code - start
 
-          // case: mora
+          // case: mora NP
           if (parkCode === "mora") {
             motorcycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
             bicycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
           }
 
-          //case: cave
+          //case: only one type of fee
           switch (parkCode) {
             case "dena":
               ticketFee = 15;
@@ -284,15 +284,12 @@ function getNP(parkCode, i) {
           $(".annual-pass span").eq(i).text(annualPass);
         } // if fee is 0, hide entranceFee and pass
         else {
-           $(".fee").eq(i).find("img, span").hide();
+          $(".fee").eq(i).find("img, span").hide();
 
-           $(".annual-pass").eq(i).hide();
+          $(".annual-pass").eq(i).hide();
           // exception code - start
           if ((parkCode = "hosp")) {
-            $(".fee")
-              .eq(i)
-              .find("b")
-              .after("Free");
+            $(".fee").eq(i).find("b").after("Free");
             return;
           }
           // exception code - End
@@ -300,7 +297,6 @@ function getNP(parkCode, i) {
             .eq(i)
             .find("b")
             .after(result.data[0].entranceFees[0].description.split(".")[0] + ".");
-         
         }
       }
 
@@ -321,7 +317,7 @@ function getNP(parkCode, i) {
 
 // get weather info
 function getWeather(lat, lon, divIndex) {
-  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
+  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=07fbc9932f3a4d5f19df3aa5907fbbb2");
 
   promise2
     .then((response) => {
@@ -331,7 +327,7 @@ function getWeather(lat, lon, divIndex) {
     .then((result) => {
       //display future weather
       for (let i = 0; i < 7; i++) {
-        var futureData = [result.daily[i].temp.day, result.daily[i].wind_speed, result.daily[i].humidity];
+        var futureData = [parseInt(result.daily[i].temp.day), parseInt(result.daily[i].wind_speed), result.daily[i].humidity];
         var futureWeather = result.daily[i].weather[0].main.toLowerCase();
 
         displayFuture(futureData, i, futureWeather, divIndex);
