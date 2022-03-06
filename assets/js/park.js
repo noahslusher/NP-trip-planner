@@ -1,53 +1,53 @@
 var nationalParks = {
   AL: ["Denali National Park | dena", "Gates of the Arctic National Park | gaar", "Glacier Bay National Park | glba", "Katmai National Park | katm", "Kenai Fjords National Park | kefj", "Kobuk Valley National Park | kova", "Lake Clark National Park | lacl", "Wrangell-St. Elias National Park | wrst"],
-  AK: [],
+  // AK: [],
   AZ: ["Grand Canyon National Park | grca", "Petrified Forest National Park | pefo", "Saguaro National Park | sagu"],
   AR: ["Hot Springs National Park | hosp"],
   CA: ["Channel Islands National Park | chis", "Death Valley National Park | deva", "Joshua Tree National Park | jotr", "Lassen Volcanic National Park | lavo", "Redwood National Park | redw", "Sequoia & Kings Canyon National Park | seki", "Yosemite National Park | yose"],
   CO: ["Black Canyon of the Gunnison National Park | blca", "Great Sand Dunes National Park | grsa", "Mesa Verde National Park | meve", "Rocky Mountain National Park | romo"],
-  CT: [],
-  DE: [],
+  // CT: [],
+  // DE: [],
   FL: ["Biscayne National Park | bisc", "Dry Tortugas National Park | drto", "Everglades National Park | ever"],
-  GA: [],
+  // GA: [],
   HI: ["Haleakala National Park | hale", "Hawaii Volcanoes National Park | havo"],
   ID: ["Yellowstone National Park | yell"],
-  IL: [],
-  IN: [],
-  IA: [],
-  KS: [],
+  // IL: [],
+  // IN: [],
+  // IA: [],
+  // KS: [],
   KY: ["Mammoth Cave National Park | maca"],
-  LA: [],
+  // LA: [],
   ME: ["Acadia National Park | acad"],
-  MD: [],
-  MA: [],
+  // MD: [],
+  // MA: [],
   MI: ["Isle Royale National Park | isro"],
   MN: ["Voyageurs National Park | voya"],
-  MS: [],
-  MO: [],
+  // MS: [],
+  // MO: [],
   MT: ["Glacier National Park | glac", "Yellowstone National Park | yell"],
-  NE: [],
+  // NE: [],
   NV: ["Great Basin National Park | grba"],
-  NH: [],
-  NJ: [],
-  NM: ["Carlsbad Caverns National Park | caca"],
-  NY: [],
+  // NH: [],
+  // NJ: [],
+  NM: ["Carlsbad Caverns National Park | cave"],
+  // NY: [],
   NC: ["Great Smoky Mountains National Park | grsm"],
   ND: ["Theodore Roosevelt National Park | thro"],
-  OH: ["Cuyahoga Valley National Park | cuya"],
-  OK: [],
+  OH: ["Cuyahoga Valley National Park | cuva"],
+  // OK: [],
   OR: ["Crater Lake National Park | crla"],
-  PA: [],
-  RI: [],
+  // PA: [],
+  // RI: [],
   SC: ["Congaree National Park | cong"],
   SD: ["Badlands National Park | badl", "Wind Cave National Park | wica"],
   TN: ["Great Smoky Mountains National Park | grsm"],
   TX: ["Big Bend National Park | bibe", "Guadalupe Mountains National Park | gumo"],
   UT: ["Arches National Park | arch", "Bryce Canyon National Park | brca", "Canyonlands National Park | cany", "Capitol Reef National Park | care", "Zion National Park | zion"],
-  VT: [],
+  // VT: [],
   VA: ["Shenandoah National Park | shen"],
   WA: ["Mount Rainier National Park | mora", "North Cascades National Park | noca", "Olympic National Park | olym"],
-  WV: [],
-  WI: [],
+  // WV: [],
+  // WI: [],
   WY: ["Grand Teton National Park | grte", "Yellowstone National Park | yell"],
 };
 
@@ -68,18 +68,18 @@ var nationalParks = {
 
 // planMyTrip.addEventListener("click", userInput);
 
-var getState = "KY";
+var getState = "AR";
 var getDate = new Date();
 var parkList = nationalParks[getState];
 
+// create park section according to the parkCodeList.length
+createParkSection();
 function createParkSection() {
-  // create park section according to the parkCodeList.length
   for (let i = 0; i < parkList.length; i++) {
     $(".park-list").append($("#template").clone().attr("id", ""));
   }
   $("#template").remove();
 }
-createParkSection();
 
 for (let i = 0; i < parkList.length; i++) {
   var parkName = parkList[i].split("|")[0].trim();
@@ -111,7 +111,7 @@ for (let i = 0; i < parkList.length; i++) {
   // google api: put in google map
   $(parkDiv)
     .find(".park-map")
-    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName + '"></iframe>');
+    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -119,7 +119,7 @@ for (let i = 0; i < parkList.length; i++) {
 
 function getGeo(parkName, i) {
   // get national park's geo info
-  var promise = fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + parkName + "&key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg");
+  var promise = fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + parkName.replace(/&/g, "%26") + "&key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg");
 
   promise
     .then((response) => {
@@ -138,12 +138,6 @@ function getGeo(parkName, i) {
       console.log("geo-api connect error", error);
     });
 }
-
-// datepicker
-$(function () {
-  $("#datepicker").datepicker().addClass("font-color: blue");
-  minDate: 1;
-});
 
 // return future date according to tomorrow(i=1), the day after tomorrow(i=2) ,etc
 function displayDate(i) {
@@ -187,7 +181,7 @@ function displayFuture(data, i, weather, divIndex) {
 function getNP(parkCode, i) {
   fetch("https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=0udE9V2GRj3cRahVJ120KpyLcjQ4YXlVgLpPg4RQ")
     .then((response) => {
-      console.log(response)
+      // console.log(response);
       return response.json();
     })
     .then((result) => {
@@ -202,26 +196,114 @@ function getNP(parkCode, i) {
         }
         activities += el.name + ", ";
         if (index === 5) {
-          activities += el.name + " etc.";
+          activities += el.name + ", etc.";
         }
       });
       $(".what-to-expect span").eq(i).text(activities);
       //string data: hours
       var operatingHours = result.data[0].operatingHours[0].description.split(".")[0] + ".";
-      //string multiple data: entrance fees
+
       $(".hours span").eq(i).text(operatingHours);
+      //string multiple data: entrance fees
+      feeAndPass();
+      function feeAndPass() {
+        console.log(parseInt(result.data[0].entranceFees[0].cost) !== 0);
 
-      var vehicleFee = result.data[0].entranceFees[0].cost.split(".")[0];
-      console.log(typeof vehicleFee);
+        // check whether fee is 0
+        if (parseInt(result.data[0].entranceFees[0].cost) !== 0) {
+          var vehicleFee;
+          var motorcycleFee;
+          var bicycleFee;
+          var ticketFee;
+          var passFee;
 
-      $(".fee .vehicle").eq(i).text(vehicleFee);
-      var motorcycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
-      $(".fee .motorcycle").eq(i).text(motorcycleFee);
-      var bicycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
-      $(".fee .bicycle").eq(i).text(bicycleFee);
-      //string data: entrance pass
-      var annualPass = result.data[0].entrancePasses[0].cost.split(".")[0];
-      $(".annual-pass span").eq(i).text(annualPass);
+          // exception code - start
+
+          // case: mora
+          if (parkCode === "mora") {
+            motorcycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
+            bicycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
+          }
+
+          //case: cave
+          switch (parkCode) {
+            case "dena":
+              ticketFee = 15;
+              passFee = 45;
+              oneFee();
+              oneFeePass();
+              return;
+            case "drto":
+              ticketFee = 15;
+              oneFee();
+              return;
+            case "isro":
+              ticketFee = 7;
+              passFee = 60;
+              oneFee();
+              oneFeePass();
+              return;
+            case "gumo":
+              ticketFee = 10;
+              passFee = 35;
+              oneFee();
+              oneFeePass();
+              return;
+          }
+          function oneFee() {
+            $(".fee").eq(i).find("img, span").hide();
+            $(".annual-pass").eq(i).hide();
+            $(".fee")
+              .eq(i)
+              .find("b")
+              .after("$" + ticketFee);
+          }
+          function oneFeePass() {
+            $(".annual-pass").eq(i).show().find("span").text(passFee);
+          }
+          // exception code - end
+
+          vehicleFee = result.data[0].entranceFees[0].cost.split(".")[0];
+          motorcycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
+          bicycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
+          $(".fee .vehicle")
+            .eq(i)
+            .text("$" + vehicleFee + "|");
+
+          $(".fee .motorcycle")
+            .eq(i)
+            .text("$" + motorcycleFee + "|");
+
+          $(".fee .bicycle")
+            .eq(i)
+            .text("$" + bicycleFee);
+
+          //string data: entrance pass
+          var annualPass = result.data[0].entrancePasses[0].cost.split(".")[0];
+
+          $(".annual-pass span").eq(i).text(annualPass);
+        } // if fee is 0, hide entranceFee and pass
+        else {
+           $(".fee").eq(i).find("img, span").hide();
+
+           $(".annual-pass").eq(i).hide();
+          // exception code - start
+          if ((parkCode = "hosp")) {
+            $(".fee")
+              .eq(i)
+              .find("b")
+              .after("Free");
+            return;
+          }
+          // exception code - End
+          $(".fee")
+            .eq(i)
+            .find("b")
+            .after(result.data[0].entranceFees[0].description.split(".")[0] + ".");
+         
+        }
+      }
+
       //string data: contact phone
       var contactPhone = result.data[0].contacts.phoneNumbers[0].phoneNumber;
       $(".park-contact .tel")
@@ -239,11 +321,11 @@ function getNP(parkCode, i) {
 
 // get weather info
 function getWeather(lat, lon, divIndex) {
-  //var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
+  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=028a37f5d8559aab5b5649bf9e5dc203");
 
   promise2
     .then((response) => {
-      // console.log(promise2);
+      console.log(promise2);
       return response.json();
     })
     .then((result) => {
