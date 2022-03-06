@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" />
@@ -41,14 +41,14 @@
 
       <form action="./park.html" id="state" class="text-center flex flex-wrap justify-center">
         <!-- Select Date Start-->
-        <div class="pick-date">
-          <input type="text" id="datepicker" placeholder="Date: DD/MM/YY" autocomplete="off" class="border rounded text-black py-3 pl-4 mr-5" />
+        <div class="pick-date mx-2">
+          <input type="text" id="datepicker" placeholder="DD/MM/YY" autocomplete="off" class="border rounded text-black text-center py-3 mr-5" />
         </div>
         <!-- Select Date End-->
         <!-- Select State Start-->
-        <div class="pick-state">
-          <select name="national-park" id="userState" class="state border rounded text-black px-10 py-3" type="text" autofocus="true" size="1">
-            <option value="SEL">SELECT STATE</option>
+        <div class="pick-state mx-2">
+          <select name="national-park" id="userState" class="state border rounded text-center text-black px-10 py-3" type="text" autofocus="true" size="1">
+            <option class="select-state" value="SEL">SELECT STATE</option>
             <option value="AL">Alabama</option>
             <!-- <option value="AK">Alaska</option> -->
             <option value="AZ">Arizona</option>
@@ -103,11 +103,11 @@
           </select>
         </div>
         <!-- Select State End-->
+        <!-- Insert submit button -->
+        <div class="submit-button mt-8">
+          <button class=" hover:text-black p-3 text-[22px]" type="submit">Plan My Trip!</button>
+        </div>
       </form>
-      <!-- Insert submit button -->
-      <div class="flex justify-center">
-        <button class="mt-3 hover:bg-orange-200 hover:text-black p-3 text-[22px]" id="submit-btn" type="submit">Plan My Trip!</button>
-      </div>
     </main>
   </body>
   <!-- jQuery -->
@@ -116,5 +116,4 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="./assets/js/homepage.js"></script>
 
-  <script src="./assets/js/park.js"></script>
 </html>

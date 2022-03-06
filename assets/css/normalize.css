@@ -20,9 +20,11 @@ img {
   vertical-align: bottom;
 }
 
-input {
+input,select {
   outline: none;
+  border: none;
 }
+
 
 /* cursor's style of button */
 button {
