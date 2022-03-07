@@ -51,7 +51,6 @@ var nationalParks = {
   WY: ["Grand Teton National Park | grte", "Yellowstone National Park | yell"],
 };
 
-
 //retrieving correct state based on input- defaulting to KY
 var getState = localStorage.getItem("state") || "KY";
 var getDate = new Date();
@@ -94,9 +93,9 @@ for (let i = 0; i < parkList.length; i++) {
       alt: parkName,
     });
   // google api: put in google map
-  // $(parkDiv)
-  //   .find(".park-map")
-  //   .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '&zoom=7"></iframe>');
+  $(parkDiv)
+    .find(".park-map")
+    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '&zoom=7"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -192,8 +191,6 @@ function getNP(parkCode, i) {
       //string multiple data: entrance fees
       feeAndPass();
       function feeAndPass() {
-        console.log(parseInt(result.data[0].entranceFees[0].cost) !== 0);
-
         // if fee is not 0, display fee and pass
         if (parseInt(result.data[0].entranceFees[0].cost) !== 0) {
           var vehicleFee;
@@ -204,12 +201,6 @@ function getNP(parkCode, i) {
 
           // exception code - start
 
-          // case: mora NP
-          if (parkCode === "mora") {
-            motorcycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
-            bicycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
-          }
-
           //case: only one type of fee
           switch (parkCode) {
             case "dena":
@@ -217,6 +208,10 @@ function getNP(parkCode, i) {
               passFee = 45;
               oneFee();
               oneFeePass();
+              return;
+            case "cave":
+              ticketFee = 15;
+              oneFee();
               return;
             case "drto":
               ticketFee = 15;
@@ -246,11 +241,19 @@ function getNP(parkCode, i) {
           function oneFeePass() {
             $(".annual-pass").eq(i).show().find("span").text(passFee);
           }
-          // exception code - end
 
           vehicleFee = result.data[0].entranceFees[0].cost.split(".")[0];
           motorcycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
           bicycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
+          // case: bike and motor price exchange
+          if (motorcycleFee < bicycleFee) {
+            var exchange;
+            exchange = motorcycleFee;
+            motorcycleFee = bicycleFee;
+            bicycleFee = exchange;
+          }
+          // exception code - end
+
           $(".fee .vehicle")
             .eq(i)
             .text("$" + vehicleFee + "|");
