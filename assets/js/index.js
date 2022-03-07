@@ -22,7 +22,7 @@ $("#userState").click(function () {
 
 });
 
-// get users state 
+// get users state
 var select = document.getElementById("userState");
 var userInput = function () {
    var getState = select.options[select.selectedIndex].value;
