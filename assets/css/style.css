@@ -6,7 +6,8 @@ body {
 body {
   width: 90%;
   margin: 50px auto 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  padding: 50px;
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   background-image: linear-gradient(rgb(103, 94, 94), rgb(214, 200, 200));
 }
 
@@ -78,10 +79,10 @@ header {
 }
 
 .park-describe {
+  font-family: Italic 1em Georgia, serif;
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 10px;
-  font-style: italic;
 }
 
 .park-map {
