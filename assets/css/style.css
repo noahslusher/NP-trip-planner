@@ -1,3 +1,8 @@
+html,
+body {
+  width: 100%;
+}
+
 body {
   width: 80%;
   margin: 50px auto 0;
@@ -26,6 +31,10 @@ header {
   margin-top: 50px;
   padding: 20px 30px;
   background: url("https://www.nps.gov/common/uploads/structured_data/010A933C-95B1-CBCD-D6D64D47D5B81E76.jpg") no-repeat;
+}
+
+.park:last-child {
+  padding-bottom: 90px;
 }
 
 .park h2 {
@@ -105,17 +114,13 @@ header {
   flex: 100%;
 }
 
-.schedule > p {
-  font-size: 24px;
-}
-
 .weather-row {
   flex: 100%;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
   align-content: space-between;
-  font-size: 15px;
-  margin-top: 5px;
+  margin: 5px 2px auto;
 }
 
 .weather-row > div {
@@ -123,7 +128,6 @@ header {
   text-align: center;
   background-color: rgb(24, 82, 136);
   flex: 1;
-  margin-right: 10px;
   padding: 5px;
   color: #fff;
   position: relative;
@@ -157,8 +161,15 @@ header {
   margin-right: 0px;
 }
 
-.weather-row p {
-  font-size: 14px;
+.schedule > p {
+  font-size: 25px;
+}
+.weather-row > div > p {
+  padding-top: 5px;
+  font-size: 16px;
+}
+.weather-row ul {
+  font-size: 13px;
 }
 
 .weather-row img {
@@ -257,7 +268,154 @@ header {
   font-size: 18px;
 }
 
-@media (min-width: 820px){
+@media screen and (max-width: 720px) {
+  body {
+    margin: 0;
+    width: 100%;
+  }
 
+  .park {
+    margin: 0 0 10px 0;
+    padding: 20px 15px;
+  }
+
+  .park h2 {
+    font-size: 20px;
+  }
+
+  .park-info {
+    flex-direction: column;
+    height: auto;
+  }
+  .park-image {
+    width: 100%;
+    max-height: 250px;
+  }
+  .park-describe {
+    font-size: 15px;
+  }
+  .brief-intro {
+    margin-top: 10px;
+    padding: 0;
+    font-size: 13px;
+  }
+
+  .schedule {
+    margin-top: 0px;
+  }
+
+  .schedule > p {
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .weather-row {
+    justify-content: space-between;
+  }
+
+  .weather-row > div {
+    max-width: 80px;
+    min-width: 80px;
+    margin: 0;
+    font-size: 10px;
+  }
+
+  .weather-row ul {
+    display: none;
+  }
+
+  .weather-row > div:hover::before {
+    display: none;
+  }
+
+  .generateBtn {
+    width: 200px;
+    padding: 10px 0;
+    box-shadow: none;
+  }
+
+  .currentPlan {
+    padding: 20px;
+  }
+  .cross {
+    font-size: 14px;
+    padding: 0px 6px;
+  }
+
+  .currentPlan > p {
+    font-size: 16px;
+  }
+
+  .plan-date,
+  .plan-site {
+    font-size: 14px;
+  }
+
+  .plan-site img {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+  }
 }
 
+@media screen and (max-width: 720px) {
+  .weather-row > div > p {
+    font-size: 12px;
+  }
+  .weather-row > div {
+    min-width: 24%;
+    max-width: 24%;
+    margin-top: 3px;
+  }
+
+  .weather-row::after {
+    content: "";
+    width: 24%;
+  }
+}
+
+@media screen and (min-width: 721px) {
+  .brief-intro {
+    font-size: 16px;
+  }
+  .park-describe {
+    font-size: 17px;
+  }
+
+  .weather-row > div > p {
+    font-size: 13px;
+  }
+
+  .weather-row > div {
+    min-width: 24%;
+    max-width: 24%;
+    margin: 3px 2px auto;
+  }
+
+  .weather-row::after {
+    content: "";
+    width: 24%;
+    margin: 3px 2px auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .brief-intro {
+    font-size: 17px;
+  }
+  .park-describe {
+    font-size: 18px;
+  }
+
+  .weather-row > div ul li {
+    display: block !important;
+  }
+
+  .weather-row > div {
+    min-width: auto;
+    max-width: auto;
+  }
+  .weather-row::after {
+    display: none;
+  }
+}

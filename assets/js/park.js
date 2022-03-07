@@ -111,7 +111,7 @@ for (let i = 0; i < parkList.length; i++) {
   // google api: put in google map
   // $(parkDiv)
   //   .find(".park-map")
-  //   .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '"></iframe>');
+  //   .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '&zoom=7"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -326,7 +326,7 @@ function getWeather(lat, lon, divIndex) {
     })
     .then((result) => {
       //display future weather
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i <= 7; i++) {
         var futureData = [parseInt(result.daily[i].temp.day), parseInt(result.daily[i].wind_speed), result.daily[i].humidity];
         var futureWeather = result.daily[i].weather[0].main.toLowerCase();
 
@@ -441,6 +441,7 @@ function loadTrip() {
   if (!localStorage.getItem("tripPlan")) {
     $(".generateBtn").text("Create Your First Plan");
   }
+
 }
 
 $(".cross").on("click", function () {
