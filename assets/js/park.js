@@ -336,6 +336,23 @@ function getWeather(lat, lon, divIndex) {
     .catch((error) => console.log("weather-api connect error", error));
 }
 
+$(".weather-row div").hover(
+  function () {
+    if ($(this).hasClass("active")) {
+      $(this).addClass("minus");
+    } else {
+      $(this).addClass("add");
+    }
+  },
+  function () {
+    if ($(this).hasClass("add")) {
+      $(this).removeClass("add");
+    } else if ($(this).hasClass("minus")) {
+      $(this).removeClass("minus");
+    }
+  }
+);
+
 // click the date and add active status
 $(".weather-row").on("click", "div", function () {
   //disabled when button is in saving ProcessingInstruction
@@ -347,8 +364,11 @@ $(".weather-row").on("click", "div", function () {
   if ($(".currentPlan").hasClass("currentPlan-active")) {
     return;
   }
+
   // change the color of li
+
   $(this).toggleClass("active");
+
   //change the text of button
   $(".generateBtn").addClass("generateBtn-update");
 
@@ -441,7 +461,6 @@ function loadTrip() {
   if (!localStorage.getItem("tripPlan")) {
     $(".generateBtn").text("Create Your First Plan");
   }
-
 }
 
 $(".cross").on("click", function () {
