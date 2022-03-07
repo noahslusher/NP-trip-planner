@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <form action="./park.html" id="state" class="text-center flex flex-wrap justify-center">
+      <form method="get" id="form" class="text-center flex flex-wrap justify-center">
         <!-- Select Date Start-->
         <div class="pick-date mx-2">
           <input type="text" id="datepicker" placeholder="DD/MM/YY" autocomplete="off" class="border rounded text-black text-center py-3 mr-5" />
@@ -48,7 +48,7 @@
         <!-- Select State Start-->
         <div class="pick-state mx-2">
           <select name="national-park" id="userState" class="state border rounded text-center text-black px-10 py-3" type="text" autofocus="true" size="1">
-            <option class="select-state" value="SEL">SELECT STATE</option>
+            <option class="select-state" value="null">SELECT STATE</option>
             <option value="AL">Alabama</option>
             <!-- <option value="AK">Alaska</option> -->
             <option value="AZ">Arizona</option>

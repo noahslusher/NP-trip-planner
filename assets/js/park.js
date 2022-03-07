@@ -52,10 +52,10 @@ var nationalParks = {
 };
 
 //retrieving correct state based on input- defaulting to KY
-var getState = localStorage.getItem("state") || "KY";
-var getDate = new Date();
+var url = location.search;
+var getDate = url.split("&")[0].split("=")[1];
+var getState = url.split("&")[1].split("=")[1];
 var parkList = nationalParks[getState];
-
 // create park section according to the parkCodeList.length
 createParkSection();
 function createParkSection() {
@@ -125,7 +125,7 @@ function getGeo(parkName, i) {
 
 // return future date according to tomorrow(i=1), the day after tomorrow(i=2) ,etc
 function displayDate(i) {
-  var date = new Date();
+  var date = new Date(getDate);
   date = date.setDate(date.getDate() + i);
   date = new Date(date);
   return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();

@@ -144,7 +144,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(240, 137, 20, 0.4) no-repeat center;
+  background: rgba(240, 137, 20, 0.7) no-repeat center;
   background-image: url(../icons/add_icon.png);
 }
 
@@ -155,7 +155,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(214, 40, 9, 0.26) no-repeat center;
+  background: rgba(240, 68, 38, 0.5) no-repeat center;
   background-image: url(../icons/minus_icon.svg);
 }
 
@@ -233,7 +233,7 @@ header {
 
 .currentPlan-active {
   transform: translate(-50%, -110px);
-  
+
   display: block;
 }
 
@@ -287,13 +287,16 @@ header {
     flex-direction: column;
     height: auto;
   }
+
   .park-image {
     width: 100%;
     max-height: 250px;
   }
+
   .park-describe {
     font-size: 15px;
   }
+
   .brief-intro {
     margin-top: 10px;
     padding: 0;
@@ -324,9 +327,9 @@ header {
     display: none;
   }
 
-  .weather-row > div:hover::before {
+  /* .weather-row > div:hover::before {
     display: none;
-  }
+  } */
 
   .generateBtn {
     padding: 10px 20px;
@@ -382,7 +385,7 @@ header {
   }
 
   .weather-row > div > p {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .weather-row > div {
