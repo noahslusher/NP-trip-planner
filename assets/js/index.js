@@ -14,10 +14,19 @@ $("#userState").click(function () {
     $("#datepicker").datepicker({minDate: 1, maxDate: 60})
   $('#datepicker').on("change", function() {
     $(this).css("color", "blue")
-    var selected = $(this).val();
-    console.log(selected);
+    var dateSelected = $(this).val();
+    localStorage.setItem("date", dateSelected)
+    console.log(dateSelected);
        });
 
 
 });
 
+// get users state 
+var select = document.getElementById("userState");
+var userInput = function () {
+   var getState = select.options[select.selectedIndex].value;
+   console.log(getState);
+   localStorage.setItem("state", getState)
+ };
+select.addEventListener('change', userInput)

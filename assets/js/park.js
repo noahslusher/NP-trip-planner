@@ -51,24 +51,9 @@ var nationalParks = {
   WY: ["Grand Teton National Park | grte", "Yellowstone National Park | yell"],
 };
 
-// //added users input to console
-// $(function () {
-//   $("#datepicker").datepicker();
-//   $("#datepicker").on("change", function () {
-//     var selected = $(this).val();
-//     console.log(selected);
-//   });
-// });
-// var planMyTrip = document.getElementById("submit-btn");
-// var userInput = function () {
-//   var select = document.getElementById("userState");
-//   var value = select.options[select.selectedIndex].value;
-//   console.log(value);
-// };
 
-// planMyTrip.addEventListener("click", userInput);
-
-var getState = "TX";
+//retrieving correct state based on input- defaulting to KY
+var getState = localStorage.getItem("state") || "KY";
 var getDate = new Date();
 var parkList = nationalParks[getState];
 
