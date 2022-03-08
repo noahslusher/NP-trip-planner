@@ -4,9 +4,10 @@ body {
 }
 
 body {
-  width: 80%;
+  width: 90%;
   margin: 50px auto 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  padding: 50px;
+  font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   background-image: linear-gradient(rgb(103, 94, 94), rgb(214, 200, 200));
 }
 
@@ -47,7 +48,7 @@ header {
   display: flex;
   align-items: stretch;
 
-  height: 350px;
+  height: 330px;
 }
 
 .park-image {
@@ -78,10 +79,10 @@ header {
 }
 
 .park-describe {
+  font-family: Italic 1em Georgia, serif;
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 10px;
-  font-style: italic;
 }
 
 .park-map {
@@ -144,7 +145,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(240, 137, 20, 0.4) no-repeat center;
+  background: rgba(240, 137, 20, 0.7) no-repeat center;
   background-image: url(../icons/add_icon.png);
 }
 
@@ -155,7 +156,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(226, 42, 10, 0.4) no-repeat center;
+  background: rgba(240, 68, 38, 0.5) no-repeat center;
   background-image: url(../icons/minus_icon.svg);
 }
 
@@ -228,11 +229,12 @@ header {
   padding: 20px 40px 20px;
   border-radius: 5px;
   /* display: none; */
-  transition: 1s;
+  transition: 2s;
 }
 
 .currentPlan-active {
   transform: translate(-50%, -110px);
+
   display: block;
 }
 
@@ -247,19 +249,12 @@ header {
   position: absolute;
   top: 10px;
   right: 10px;
-  border: 1px solid red;
-  border-radius: 50%;
-  padding: 1px 6px;
-  color: red;
-  font-size: 20px;
-  line-height: 20px;
 }
 
-.cross:hover {
-  color: rgba(201, 246, 222, 0.95);
-  background-color: red;
-  cursor: pointer;
-  display: block;
+.trash {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .plan-date {
@@ -293,13 +288,16 @@ header {
     flex-direction: column;
     height: auto;
   }
+
   .park-image {
     width: 100%;
     max-height: 250px;
   }
+
   .park-describe {
     font-size: 15px;
   }
+
   .brief-intro {
     margin-top: 10px;
     padding: 0;
@@ -330,13 +328,12 @@ header {
     display: none;
   }
 
-  .weather-row > div:hover::before {
+  /* .weather-row > div:hover::before {
     display: none;
-  }
+  } */
 
   .generateBtn {
-    width: 200px;
-    padding: 10px 0;
+    padding: 10px 20px;
     box-shadow: none;
   }
 
@@ -382,14 +379,14 @@ header {
 
 @media screen and (min-width: 721px) {
   .brief-intro {
-    font-size: 16px;
+    font-size: 14px;
   }
   .park-describe {
     font-size: 17px;
   }
 
   .weather-row > div > p {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .weather-row > div {

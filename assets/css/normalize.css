@@ -17,14 +17,14 @@ li {
 }
 
 img {
-  vertical-align: bottom;
+  vertical-align: middle;
 }
 
-input,select {
+input,
+select {
   outline: none;
   border: none;
 }
-
 
 /* cursor's style of button */
 button {

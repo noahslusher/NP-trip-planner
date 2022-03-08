@@ -21,25 +21,25 @@
       <p class="info text-center text-[32px]">" The mountains are calling and I must go."<span> — John Muir</span></p>
 
       <div class="steps flex justify-center justify-content-between text-[30px] px-10 mx-10">
-        <div class="p-10 text-center text-black bg-orange-200 opacity-75 rounded-l-lg">
+        <div class="p-10 flex flex-col justify-evenly text-center text-black bg-orange-200 opacity-75 rounded-l-lg">
           Complete in
           <br />3 easy steps:
         </div>
-        <div class="p-10 text-black bg-slate-200 text-center opacity-75">
+        <div class="p-10 flex flex-col justify-evenly text-black bg-slate-200 text-center opacity-75">
           <i class="fa fa-calendar"></i>
           <p>Pick a Date</p>
         </div>
-        <div class="p-10 text-black bg-slate-200 text-center opacity-75">
+        <div class="p-10 flex flex-col justify-evenly text-black bg-slate-200 text-center opacity-75">
           <i class="fa fa-map"></i>
           <p>Search by State</p>
         </div>
-        <div class="p-10 text-black bg-slate-200 text-center opacity-75 rounded-r-lg">
+        <div class="p-10 flex flex-col justify-evenly text-black bg-slate-200 text-center opacity-75 rounded-r-lg">
           <div class="mountain-icon"><img src="./assets/icons/mountain.svg" alt="mountain-icon" /></div>
           <p>View the Parks</p>
         </div>
       </div>
 
-      <form action="./park.html" id="state" class="text-center flex flex-wrap justify-center">
+      <form method="get" id="form" class="text-center flex flex-wrap justify-center">
         <!-- Select Date Start-->
         <div class="pick-date mx-2">
           <input type="text" id="datepicker" placeholder="DD/MM/YY" autocomplete="off" class="border rounded text-black text-center py-3 mr-5" />
@@ -48,7 +48,7 @@
         <!-- Select State Start-->
         <div class="pick-state mx-2">
           <select name="national-park" id="userState" class="state border rounded text-center text-black px-10 py-3" type="text" autofocus="true" size="1">
-            <option class="select-state" value="SEL">SELECT STATE</option>
+            <option class="select-state" value="null">SELECT STATE</option>
             <option value="AL">Alabama</option>
             <!-- <option value="AK">Alaska</option> -->
             <option value="AZ">Arizona</option>

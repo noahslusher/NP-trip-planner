@@ -51,12 +51,11 @@ var nationalParks = {
   WY: ["Grand Teton National Park | grte", "Yellowstone National Park | yell"],
 };
 
-
 //retrieving correct state based on input- defaulting to KY
-var getState = localStorage.getItem("state") || "KY";
-var getDate = new Date();
+var url = location.search;
+var getDate = url.split("&")[0].split("=")[1];
+var getState = url.split("&")[1].split("=")[1];
 var parkList = nationalParks[getState];
-
 // create park section according to the parkCodeList.length
 createParkSection();
 function createParkSection() {
@@ -94,9 +93,9 @@ for (let i = 0; i < parkList.length; i++) {
       alt: parkName,
     });
   // google api: put in google map
-  // $(parkDiv)
-  //   .find(".park-map")
-  //   .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '&zoom=7"></iframe>');
+  $(parkDiv)
+    .find(".park-map")
+    .append('<iframe style="border: 0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCueXEoU9lnKGoZ8uawRHGyV8tjNV9C_Sg&q=' + parkName.replace(/&/g, "%26") + "," + getState + '&zoom=7"></iframe>');
   // open weather api: put in weather info
   $(parkDiv).find(".weather-row");
   getGeo(parkName, i);
@@ -126,7 +125,7 @@ function getGeo(parkName, i) {
 
 // return future date according to tomorrow(i=1), the day after tomorrow(i=2) ,etc
 function displayDate(i) {
-  var date = new Date();
+  var date = new Date(getDate);
   date = date.setDate(date.getDate() + i);
   date = new Date(date);
   return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
@@ -192,8 +191,6 @@ function getNP(parkCode, i) {
       //string multiple data: entrance fees
       feeAndPass();
       function feeAndPass() {
-        console.log(parseInt(result.data[0].entranceFees[0].cost) !== 0);
-
         // if fee is not 0, display fee and pass
         if (parseInt(result.data[0].entranceFees[0].cost) !== 0) {
           var vehicleFee;
@@ -204,12 +201,6 @@ function getNP(parkCode, i) {
 
           // exception code - start
 
-          // case: mora NP
-          if (parkCode === "mora") {
-            motorcycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
-            bicycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
-          }
-
           //case: only one type of fee
           switch (parkCode) {
             case "dena":
@@ -217,6 +208,10 @@ function getNP(parkCode, i) {
               passFee = 45;
               oneFee();
               oneFeePass();
+              return;
+            case "cave":
+              ticketFee = 15;
+              oneFee();
               return;
             case "drto":
               ticketFee = 15;
@@ -246,11 +241,19 @@ function getNP(parkCode, i) {
           function oneFeePass() {
             $(".annual-pass").eq(i).show().find("span").text(passFee);
           }
-          // exception code - end
 
           vehicleFee = result.data[0].entranceFees[0].cost.split(".")[0];
           motorcycleFee = result.data[0].entranceFees[1].cost.split(".")[0];
           bicycleFee = result.data[0].entranceFees[2].cost.split(".")[0];
+          // case: bike and motor price exchange
+          if (motorcycleFee < bicycleFee) {
+            var exchange;
+            exchange = motorcycleFee;
+            motorcycleFee = bicycleFee;
+            bicycleFee = exchange;
+          }
+          // exception code - end
+
           $(".fee .vehicle")
             .eq(i)
             .text("$" + vehicleFee + "|");
@@ -339,7 +342,7 @@ $(".weather-row").on("click", "div", function () {
 
   if (!localStorage.getItem("tripPlan")) {
     if ($(".active").length === 0) {
-      $(".generateBtn").removeClass("generateBtn-update").text("Create Your First Trip");
+      $(".generateBtn").removeClass("generateBtn-update").text("Create Your Trip");
     } else {
       $(".generateBtn").text("Save Your Trip");
     }
@@ -355,10 +358,14 @@ $(".weather-row").on("click", "div", function () {
 
 // generate the trip
 $(".generateBtn").on("click", function () {
-  if ($(".generateBtn").text() === "Create Your First Trip") {
+  if ($(".generateBtn").text() === "Create Your Trip") {
     $(".currentPlan").addClass("currentPlan-active");
     $(".plan-date").remove();
-    $(".currentPlan").append("<div><p class='plan-date'>" + "To generate your first trip, please select the dates you would like to visit. " + "</p></div>");
+    $(".currentPlan").append("<div><p class='plan-date'>" + "To generate your trip, please select your visiting dates." + "</p></div>");
+    // hide the info panel 3 seconds later
+    setTimeout(function () {
+      $(".currentPlan").removeClass("currentPlan-active");
+    }, 3000);
     return;
   }
 
@@ -399,8 +406,9 @@ $(".generateBtn").on("click", function () {
 
 // load the trip plan from localstorage
 function loadTrip() {
+  // if no plan exist, button shows "crete your trip"
   if (!localStorage.getItem("tripPlan")) {
-    $(".generateBtn").text("Create Your First Trip");
+    $(".generateBtn").text("Create Your Trip");
     return;
   }
   var savedTrip = JSON.parse(localStorage.getItem("tripPlan"));
@@ -421,16 +429,39 @@ function loadTrip() {
       });
     }
   }
-
-  // if no plan exist, button shows "crete your trip"
-  if (!localStorage.getItem("tripPlan")) {
-    $(".generateBtn").text("Create Your First Plan");
-  }
-
 }
 
+// click cross button
 $(".cross").on("click", function () {
   $(".currentPlan").removeClass("currentPlan-active");
 });
 
+// click trash button
+$(".trash").on("click", function () {
+  // do nothing if there is no saved data
+  if (!localStorage.getItem("tripPlan")) {
+    return;
+  }
+  // remove all the displayed trip info
+  $(".currentPlan >div")
+    .stop()
+    .slideUp(1000, function () {
+      $(this).remove();
+    });
+  // add info
+  $(".currentPlan").append("<div><p class='plan-date'>" + "To generate your trip, please select your visiting dates." + "</p></div>");
+
+  // change text of button
+  $(".generateBtn").text("Create Your Trip");
+  // clear saved data
+  localStorage.clear();
+  // remove all the actived li
+  $(".active").each(function () {
+    $(this).removeClass("active");
+  });
+  // hide the info panel 3 seconds later
+  setTimeout(function () {
+    $(".currentPlan").removeClass("currentPlan-active");
+  }, 3000);
+});
 loadTrip();
