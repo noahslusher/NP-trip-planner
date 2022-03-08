@@ -1,7 +1,9 @@
+/*styling for whole page*/
 :root {
   --primary-color: rgb(250, 211, 144);
 }
 
+/*styling for body*/
 html,
 body {
   width: 100%;
@@ -17,6 +19,8 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
+
+
 body::before {
   content: "";
   position: absolute;
@@ -24,21 +28,24 @@ body::before {
   left: 0;
   background: url("../images/wallpaper.jpg") no-repeat center / cover;
   filter: brightness(60%);
-
   z-index: -1;
   height: 100%;
   width: 100%;
   /* background: rgba(0, 0, 0, 0.1); */
 }
+
+/*color to park advisor title*/
 .hero {
   color: var(--primary-color);
 }
 
+/*styling for quote*/
 .info {
   margin: 0 20px;
   font: Italic 2em Georgia;
 }
 
+/*name of author for quote*/
 .info span {
   font-style: normal;
 }
@@ -47,6 +54,8 @@ body::before {
   margin: 0 auto;
 }
 
+
+/*datepicker and state input*/
 .pick-date,
 .pick-state {
   width: 220px;
@@ -83,6 +92,7 @@ body::before {
   color: var(--primary-color);
 }
 
+/*plan my trip button*/
 button {
   width: 20%;
   border: 1px solid var(--primary-color);
@@ -99,9 +109,11 @@ button:hover {
 }
 
 .missingState {
-  color: rgb(235, 47, 14) !important;
+  color: rgb(235, 47, 14) ;
 }
 
+
+/*media queries for differnt screen sizes*/
 @media screen and (max-width: 820px) {
   .hero h1 {
     display: flex;
