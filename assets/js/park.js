@@ -305,7 +305,7 @@ function getNP(parkCode, i) {
 
 // get weather info
 function getWeather(lat, lon, divIndex) {
-  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=07fbc9932f3a4d5f19df3aa5907fbbb2");
+  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=07fbc9932f3a4d5f19df3aa5907fbbb2" + '&units=imperial');
 
   promise2
     .then((response) => {
