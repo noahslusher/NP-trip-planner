@@ -305,7 +305,7 @@ function getNP(parkCode, i) {
 
 // get weather info
 function getWeather(lat, lon, divIndex) {
-  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=07fbc9932f3a4d5f19df3aa5907fbbb2" + '&units=imperial');
+  var promise2 = fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=07fbc9932f3a4d5f19df3aa5907fbbb2" + "&units=imperial");
 
   promise2
     .then((response) => {
@@ -323,6 +323,24 @@ function getWeather(lat, lon, divIndex) {
     })
     .catch((error) => console.log("weather-api connect error", error));
 }
+
+// choosing date - hover effect
+$(".weather-row div").hover(
+  function () {
+    if ($(this).hasClass("active")) {
+      $(this).addClass("minus");
+    } else {
+      $(this).addClass("add");
+    }
+  },
+  function () {
+    if ($(this).hasClass("add")) {
+      $(this).removeClass("add");
+    } else if ($(this).hasClass("minus")) {
+      $(this).removeClass("minus");
+    }
+  }
+);
 
 // click the date and add active status
 $(".weather-row").on("click", "div", function () {
