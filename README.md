@@ -7,7 +7,7 @@ A website that helps users plan a trip to a national park.
 * HTML
 * CSS- TailWind
 * JAVASCRIPT/JQuery
-* APIs- OpenWeather and National Park Service
+* APIs- OpenWeather, Google Maps and National Park Service
 
 ## Website
 URL: https://noahslusher.github.io/group-project/
