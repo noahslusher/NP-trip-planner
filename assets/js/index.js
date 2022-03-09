@@ -1,16 +1,33 @@
-console.log(1);
+// click the calendar icon and trigger the calendar
+$(".pick-date img").on("click", function () {
+  $(".pick-date input").trigger("focus");
+  $("#datepicker").attr("placeholder", "DD/MM/YY").removeClass("missingDate");
+});
+
+$(".pick-date").on("click", function () {
+  $("#datepicker").attr("placeholder", "DD/MM/YY").removeClass("missingDate");
+});
 
 // click the state-picker and disable the first option
 $("#userState").click(function () {
-  $(this).find(".select-state").hide();
+  $(this).removeClass("missingState").find(":selected").text("SELECT STATE");
 });
 
 // click the button and jump to parkCode.html
 $("#form").on("submit", function (e) {
   e.preventDefault();
+
   var date = $("#datepicker").val();
   var state = $("#userState").val();
   if (!date || state === "null") {
+    if (!date) {
+      $("#datepicker").attr("placeholder", "ENTER DATE !").addClass("missingDate");
+    }
+    if (state === "null") {
+      $(".select-state").text("SELECT STATE !");
+      $("#userState").addClass("missingState");
+      $("#userState option").addClass("optionColor");
+    }
     return;
   }
 
@@ -27,12 +44,3 @@ $(function () {
     // console.log(dateSelected);
   });
 });
-
-// get users state
-// var select = document.getElementById("userState");
-// var userInput = function () {
-//   var getState = select.options[select.selectedIndex].value;
-//   console.log(getState);
-//   localStorage.setItem("state", getState);
-// };
-// select.addEventListener("change", userInput);
