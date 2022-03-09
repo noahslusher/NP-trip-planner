@@ -10,7 +10,7 @@ $(".pick-date").on("click", function () {
 
 // click the state-picker and disable the first option
 $("#userState").click(function () {
-  $(this).removeClass("missingState").find(":selected").text("SELECT STATE");
+  $(this).removeClass("missingState");
 });
 
 // click the button and jump to parkCode.html
