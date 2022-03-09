@@ -10,7 +10,7 @@ A website that helps users plan a trip to a national park.
 * APIs- OpenWeather, Google Maps and National Park Service
 
 ## Website
-URL: https://noahslusher.github.io/group-project/
+URL: https://noahslusher.github.io/NP-trip-planner/
 
 ![image](https://user-images.githubusercontent.com/97362296/157272049-a525a40e-0508-416f-a558-2ab15c4cc51d.png)
 ![image](https://user-images.githubusercontent.com/97362296/157272930-68547d4e-35d9-4123-bd81-8da3895aa7ba.png)
