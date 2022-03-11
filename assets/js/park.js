@@ -135,11 +135,7 @@ function displayDate(i) {
 function displayFuture(data, i, weather, divIndex) {
   var weatherRow = $(".park").eq(divIndex).find(".weather-row");
   // display date
-  $(weatherRow)
-    .children("div")
-    .eq(i)
-    .find("p")
-    .text(displayDate(i + 1));
+  $(weatherRow).children("div").eq(i).find("p").text(displayDate(i));
 
   //display weather condition icon
   $(weatherRow)
@@ -424,6 +420,8 @@ $(".generateBtn").on("click", function () {
 
 // load the trip plan from localstorage
 function loadTrip() {
+  $(document).attr("title", "Trip Advisor | National Parks at " + getState);
+
   // if no plan exist, button shows "crete your trip"
   if (!localStorage.getItem("tripPlan")) {
     $(".generateBtn").text("Create Your Trip");

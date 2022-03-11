@@ -15,7 +15,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  background: url("../images/wallpaper.jpg") no-repeat center / cover;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
@@ -24,8 +24,7 @@ body::before {
   position: absolute;
   top: 0;
   left: 0;
-  background: url("../images/wallpaper.jpg") no-repeat center / cover;
-  filter: brightness(60%);
+  background-color: rgba(0, 0, 0, 0.253);
   z-index: -1;
   height: 100%;
   width: 100%;
@@ -39,6 +38,7 @@ body::before {
 
 /*styling for quote*/
 .info {
+  color: white;
   margin: 0 20px;
   font: Italic 2em Georgia;
 }
