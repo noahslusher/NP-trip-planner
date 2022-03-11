@@ -49,8 +49,7 @@ body::before {
 .park-info {
   display: flex;
   align-items: stretch;
-
-  height: 330px;
+  height: 350px;
 }
 
 /*park icons*/
